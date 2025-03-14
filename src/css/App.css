@@ -1,4 +1,6 @@
 @import 'keyframes.css';
+@import 'glitch.css';
+@import 'information-display.css';
 
 :root {
   --glitch-green: #4AF626;
@@ -46,34 +48,16 @@ html, body {
   animation: glitch 0.4s linear 1;
 }
 
-.panel.active .glitch:before, .panel.active .personal-image-underlay {
-  animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2;
-}
-
 .panel-content-split {
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
   flex: 1;
 }
 
-.glitch {
-  padding: 20px;
-  color: var(--glitch-green);
-}
-
 .grid-box {
   position: relative;
   display: flex;
-  justify-items: center;
   align-items: center;
-}
-
-.glitch:before {
-   content: attr(data-text);
-   position: absolute;
-   opacity: 0.8;
-   color: var(--glitch-pink);
-   z-index: -1;
 }
 
 .tracker-container {
@@ -123,13 +107,14 @@ html, body {
   content: attr(data-text);
   position: absolute;
   right: 0;
-  top: 0;
+  top: 4px;
   padding: 2px 5px;
   display: flex;
   background-color: var(--glitch-green);
   border-radius: 10%;
   opacity: 0%;
   transition: 0.3s;
+  font-size: 8px;
 }
 
 .tracker button:hover::before {
@@ -149,15 +134,6 @@ html, body {
   );
   animation: scanLines 1s linear infinite;
   pointer-events: none;
-}
-
-.personal-image-underlay {
-  position: absolute;
-  z-index: -1;
-  aspect-ratio: 1/1;
-  opacity: 0.8;
-  width: 75%;
-  left: 12.5%;
 }
 
 .personal-image {

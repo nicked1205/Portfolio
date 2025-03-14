@@ -32,3 +32,17 @@
     0% { background-position: 0 0; }
     100% { background-position: 0 100vh; }
   }
+
+  @keyframes openDisplay {
+    0% { height: 0px; }
+    100% { height: 80%; }
+  }
+
+  @keyframes blinkIn {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 0; }
+    40% { opacity: 1; }
+    60% { opacity: 0; }
+    100% { opacity: 1; }
+  }

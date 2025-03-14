@@ -4,9 +4,12 @@
   font-style: normal;
 }
 
+* {
+  font-family: 'Press Start 2P', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: 'Press Start 2P', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

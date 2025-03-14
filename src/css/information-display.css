@@ -1,0 +1,70 @@
+
+.information-display {
+    position: absolute;
+    margin: 30px;
+    height: 0%;
+    color: var(--glitch-green);
+    width: 70%;
+    right: 15%;
+    background-image: url(../resources/information-display.png);
+    background-size: 100% 100%;
+    line-height: 23px;
+    transition: 0.5s ease-out;
+    overflow: hidden;
+}
+
+.information-display-underlay {
+    position: absolute;
+    margin: 30px;
+    height: 0%;
+    color: var(--glitch-pink);
+    width: 70%;
+    right: 15%;
+    background-image: url(../resources/information-display-underlay.png);
+    background-size: 100% 100%;
+    z-index: -1;
+    line-height: 23px;
+    transition: 0.5s ease-out;
+    overflow: hidden;
+}
+
+.panel.active .information-display {
+    animation: openDisplay 0.5s ease-out 0.3s forwards;
+}
+
+.panel.active .information-display-underlay {
+    animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.3s, openDisplay 0.5s ease-out 0.3s forwards;
+}
+
+.information {
+    text-align: left;
+    padding-bottom: 4%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-right: 6%;
+    opacity: 0;
+}
+
+.panel.active .information {
+    animation: blinkIn 0.5s linear 1.5s forwards;
+}
+
+.panel.active .information:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.panel.active .information:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.panel.active .information:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.panel.active .information:nth-child(4) {
+    animation-delay: 2s;
+}
+
+.panel.active .information:nth-child(5) {
+    animation-delay: 2.5s;
+}

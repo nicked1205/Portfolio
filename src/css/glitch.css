@@ -1,0 +1,25 @@
+.glitch {
+    padding: 20px;
+    color: var(--glitch-green);
+  }
+
+  .glitch:before {
+    content: attr(data-text);
+    position: absolute;
+    opacity: 0.8;
+    color: var(--glitch-pink);
+    z-index: -1;
+ }
+
+ .personal-image-underlay {
+    position: absolute;
+    z-index: -1;
+    aspect-ratio: 1/1;
+    opacity: 0.8;
+    width: 75%;
+    left: 12.5%;
+  }
+
+  .panel.active .glitch:before, .panel.active .personal-image-underlay {
+    animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2;
+  }

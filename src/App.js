@@ -1,5 +1,6 @@
 import './css/App.css';
 import Panel from './components/panel';
+import InformationDisplay from './components/information-display';
 import { useState, useEffect } from 'react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
@@ -62,8 +63,8 @@ function App() {
             <img src={personalPhoto} className='personal-image' alt="personal" />  
             <img src={pinkPersonalPhoto} className='personal-image-underlay' alt="personal-underlay" />
           </div>
-          <div className="glitch" >
-
+          <div className="grid-box" >
+            <InformationDisplay contentID={0} />  
           </div>
         </div>
       </Panel>
