@@ -1,0 +1,168 @@
+@import 'keyframes.css';
+
+:root {
+  --glitch-green: #4AF626;
+  --glitch-pink: #e627a0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  text-shadow: 0 0 10px var(--glitch-green);
+  filter: blur(0px);
+}
+
+.App {
+  text-align: center;
+}
+
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, black 30%, #111 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -2;
+}
+
+.panel.active {
+  opacity: 1;
+  animation: glitch 0.4s linear 1;
+}
+
+.panel.active .glitch:before, .panel.active .personal-image-underlay {
+  animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2;
+}
+
+.panel-content-split {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+}
+
+.glitch {
+  padding: 20px;
+  color: var(--glitch-green);
+}
+
+.grid-box {
+  position: relative;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.glitch:before {
+   content: attr(data-text);
+   position: absolute;
+   opacity: 0.8;
+   color: var(--glitch-pink);
+   z-index: -1;
+}
+
+.tracker-container {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  display: inline-block;
+  place-content: center;
+  opacity: 20%;
+  transition: 0.3s;
+}
+
+.tracker-container:hover {
+  opacity: 100%;
+}
+
+.tracker {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.tracker button {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  border: 1px solid var(--glitch-green);
+  background-color: black;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.tracker button:hover {
+  background-color: var(--glitch-green);
+  opacity: 70%
+}
+
+.tracker button.active {
+  background-color: var(--glitch-green);
+}
+
+.tracker button::before {
+  content: attr(data-text);
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2px 5px;
+  display: flex;
+  background-color: var(--glitch-green);
+  border-radius: 10%;
+  opacity: 0%;
+  transition: 0.3s;
+}
+
+.tracker button:hover::before {
+  opacity: 100%;
+  right: 150%;
+}
+
+.terminal-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: scanLines 1s linear infinite;
+  pointer-events: none;
+}
+
+.personal-image-underlay {
+  position: absolute;
+  z-index: -1;
+  aspect-ratio: 1/1;
+  opacity: 0.8;
+  width: 75%;
+  left: 12.5%;
+}
+
+.personal-image {
+  position: absolute;
+  aspect-ratio: 1/1;
+  width: 75%;
+  left: 12.5%;
+}

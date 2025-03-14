@@ -1,6 +1,8 @@
-import './App.css';
+import './css/App.css';
 import Panel from './components/panel';
 import { useState, useEffect } from 'react';
+import personalPhoto from './resources/glow-personal-photo.png';
+import pinkPersonalPhoto from './resources/pink-personal-photo.png';
 
 function App() {
   let panels = ["Name", "Introduction", "Experience", "Projects", "Contact"];
@@ -54,9 +56,21 @@ function App() {
 
   return (
     <div>
-      {panels.map((panel, index) => (
-        <Panel key={index} content={panel} />
-      ))}
+      <Panel content={panels[0]} index={0} currentPanel={currentPanel}>
+        <div className="panel-content-split">
+          <div className="grid-box" >
+            <img src={personalPhoto} className='personal-image' alt="personal" />  
+            <img src={pinkPersonalPhoto} className='personal-image-underlay' alt="personal-underlay" />
+          </div>
+          <div className="glitch" >
+
+          </div>
+        </div>
+      </Panel>
+      <Panel content={panels[1]} index={1} currentPanel={currentPanel}/>
+      <Panel content={panels[2]} index={2} currentPanel={currentPanel}/>
+      <Panel content={panels[3]} index={3} currentPanel={currentPanel}/>
+      <Panel content={panels[4]} index={4} currentPanel={currentPanel}/>
       <div className='tracker-container'>
         <div className="tracker">
           {panels.map((panel, index) => (
@@ -64,6 +78,7 @@ function App() {
               key={index}
               onClick={handleClick(index)}
               className={currentPanel === index ? "active" : ""}
+              data-text={panel}
             />
           ))}
         </div>
