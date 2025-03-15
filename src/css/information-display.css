@@ -36,12 +36,29 @@
     animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.3s, openDisplay 0.5s ease-out 0.3s forwards;
 }
 
-.information {
+.information-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 100px;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 50px;
+}
+
+.information-title {
+    position: absolute;
+    font-size: 14px;
     text-align: left;
-    padding-bottom: 4%;
-    padding-top: 3%;
-    padding-left: 6%;
-    padding-right: 6%;
+    top: 3%;
+    opacity: 0;
+}
+
+.information {
+    font-size: 14px;
+    text-align: left;
     opacity: 0;
 }
 
@@ -49,22 +66,30 @@
     animation: blinkIn 0.5s linear 1.5s forwards;
 }
 
+.panel.active .information-title {
+    animation: blinkIn 0.5s linear 1.5s forwards;
+}
+
 .panel.active .information:nth-child(1) {
-    animation-delay: 0.5s;
-}
-
-.panel.active .information:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.panel.active .information:nth-child(3) {
     animation-delay: 1.5s;
 }
 
-.panel.active .information:nth-child(4) {
+.panel.active .information:nth-child(2) {
     animation-delay: 2s;
 }
 
-.panel.active .information:nth-child(5) {
+.panel.active .information:nth-child(3) {
     animation-delay: 2.5s;
+}
+
+.panel.active .information:nth-child(4) {
+    animation-delay: 3s;
+}
+
+.panel.active .information:nth-child(5) {
+    animation-delay: 3.5s;
+}
+
+.panel.active .information:nth-child(6) {
+    animation-delay: 4s;
 }

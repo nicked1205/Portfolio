@@ -68,7 +68,19 @@ function App() {
           </div>
         </div>
       </Panel>
-      <Panel content={panels[1]} index={1} currentPanel={currentPanel}/>
+      <Panel content={panels[1]} index={1} currentPanel={currentPanel}>
+        <div className="panel-content-split">
+          <div className="grid-box" >
+             <div className='terminal'></div>
+          </div>
+          <div className="grid-box" >
+            <div className='occupation-container'>
+              <div className='occupation glitch' data-text='I am a'>I am a</div>
+              <div className='occupation glitch' data-text='Software Developer'>Software Developer</div>
+            </div>
+          </div>
+        </div>
+      </Panel>
       <Panel content={panels[2]} index={2} currentPanel={currentPanel}/>
       <Panel content={panels[3]} index={3} currentPanel={currentPanel}/>
       <Panel content={panels[4]} index={4} currentPanel={currentPanel}/>

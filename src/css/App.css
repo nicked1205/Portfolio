@@ -1,6 +1,7 @@
 @import 'keyframes.css';
 @import 'glitch.css';
 @import 'information-display.css';
+@import 'decoration.css';
 
 :root {
   --glitch-green: #4AF626;
@@ -49,15 +50,40 @@ html, body {
 }
 
 .panel-content-split {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .grid-box {
   position: relative;
   display: flex;
+  flex: 1;
+  height: 100%;
   align-items: center;
+  justify-content: center;
+}
+
+.terminal {
+  position: relative;
+  display: flex;
+  padding: 30px;
+  height: 60%;
+  width: 70%;
+  border: var(--glitch-green) 1px solid;
+}
+
+.occupation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 10px;
+}
+
+.occupation {
+  font-size: 25px;
 }
 
 .tracker-container {
