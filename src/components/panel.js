@@ -1,4 +1,4 @@
-import '../css/App.css';
+import '../css/panel.css';
 import { useState } from 'react';
 
 function Panel({ children, content, currentPanel, index }) {
@@ -16,7 +16,6 @@ function myTimer() {
 
   return (
     <div  className={`panel ${currentPanel === index ? "active" : "inactive"}`}>
-      {children}
       <div className="terminal-lines"></div>
       <div className="status glitch" data-text="Status: Online">
         Status: Online
@@ -24,6 +23,7 @@ function myTimer() {
       <div className="time glitch" data-text={`${Hours}:${Minutes}:${Seconds}`}>
         {Hours}:{Minutes}:{Seconds}
       </div>
+      {children}
     </div>
   );
 }

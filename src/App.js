@@ -1,15 +1,18 @@
-import './css/App.css';
+import './css/panel.css';
 import Panel from './components/panel';
 import InformationDisplay from './components/information-display';
+import Terminal from './components/terminal';
 import { useState, useEffect } from 'react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
+import { scramble } from './functions/scrambler.js';
 
 function App() {
-  let panels = ["Name", "Introduction", "Experience", "Projects", "Contact"];
+  let panels = ["Introduction", "Roles", "Experience", "Projects", "Contact"];
   const [currentPanel, setCurrentPanel] = useState(0);
   const [displayHeight, setDisplayHeight] = useState(window.innerHeight);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [scrambling, setScrambling] = useState(false);
 
   useEffect(() => {
     const preventScroll = (event) => event.preventDefault();
@@ -55,13 +58,21 @@ function App() {
     window.scrollTo({top: displayHeight * index, behavior: 'smooth'});
   }
 
+  useEffect(() => {
+    if (currentPanel === 1 & !scrambling) {
+      scramble();
+      setScrambling(true);
+    };
+  }
+  , [currentPanel, scrambling]);
+
   return (
     <div>
       <Panel content={panels[0]} index={0} currentPanel={currentPanel}>
         <div className="panel-content-split">
           <div className="grid-box" >
             <img src={personalPhoto} className='personal-image' alt="personal" />  
-            <img src={pinkPersonalPhoto} className='personal-image-underlay' alt="personal-underlay" />
+            <img src={pinkPersonalPhoto} className='personal-image underlay' alt="personal-underlay" />
           </div>
           <div className="grid-box" >
             <InformationDisplay contentID={0} />  
@@ -71,12 +82,13 @@ function App() {
       <Panel content={panels[1]} index={1} currentPanel={currentPanel}>
         <div className="panel-content-split">
           <div className="grid-box" >
-             <div className='terminal'></div>
+             <Terminal currentPanel={currentPanel} />
           </div>
           <div className="grid-box" >
             <div className='occupation-container'>
-              <div className='occupation glitch' data-text='I am a'>I am a</div>
-              <div className='occupation glitch' data-text='Software Developer'>Software Developer</div>
+              <div className='iam glitch' data-text='I am a'>I am a</div>
+                <div id='scramble' className='occupation glitch' hidden={!scrambling}></div>
+                <div className='error glitch' hidden={scrambling} data-text='E̴̞̿ȑ̸̝r̶̩̐0̷̥̾r̶̰̅ ̶̼̒3̷̢̄ř̶͜ṛ̴̏o̴̺͂r̵̗͒'>E̴̞̿ȑ̸̝r̶̩̐0̷̥̾r̶̰̅ ̶̼̒3̷̢̄ř̶͜ṛ̴̏o̴̺͂r̵̗͒</div>
             </div>
           </div>
         </div>
