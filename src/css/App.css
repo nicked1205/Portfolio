@@ -1,0 +1,71 @@
+@import 'keyframes.css';
+@import 'glitch.css';
+@import 'information-display.css';
+@import 'decoration.css';
+@import 'terminal.css';
+@import 'panel.css';
+
+:root {
+  --glitch-green: #4AF626;
+  --glitch-pink: #e627a0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  pointer-events: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  text-shadow: 0 0 10px var(--glitch-green);
+  filter: blur(0px);
+}
+
+.App {
+  text-align: center;
+}
+
+.terminal-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+    animation: scanLines 1s linear infinite;
+  }
+
+.content-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.reset-prompt {
+    position: fixed;
+    z-index: 3;
+    right: 5%;
+    bottom: 20%;
+    color: var(--glitch-green)
+}
+
+.hidden {
+    visibility: hidden;
+}

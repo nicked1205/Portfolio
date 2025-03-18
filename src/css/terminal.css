@@ -1,6 +1,7 @@
 .terminal {
     position: absolute;
     display: flex;
+    flex-direction: column;
     padding: 35px 10px;
     width: 70%;
     aspect-ratio: 4/3;
@@ -28,7 +29,6 @@
     color: var(--glitch-green);
     font-size: 8px;
     padding: 2%;
-    pointer-events: auto !important;
     transition: 0.3s;
   }
 
@@ -42,6 +42,7 @@
   
   .terminal-tab.inactive {
     opacity: 20%;
+    pointer-events: auto !important;
   }
   
   .terminal-control-container {
@@ -66,4 +67,38 @@
   .terminal-text {
     font-size: 10px;
     line-height: 25px;
+    white-space: pre-wrap;
+  }
+
+  .typewriter {
+    position: relative;
+    overflow: hidden;
+    width: 0px;
+    border-right: .15em solid transparent;
+    white-space: nowrap;
+    animation: 
+      typing 1.2s steps(40, end) forwards,
+      blink-caret .75s step-end 2 forwards;
+  }
+
+  .typewriter:nth-child(2) {
+    animation-delay: 1.7s;
+  }
+
+  .hello-world {
+    padding-top: 10px;
+    opacity: 0;
+    animation: appear 0.1s linear 3.5s forwards;
+  }
+
+  .try-tab {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    text-align: center;
+    transform: rotate(-10deg);
+    font-size: 9px;
+    line-height: 15px;
+    padding: 10px;
+    animation: blinkIn 2s linear;
   }

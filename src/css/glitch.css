@@ -28,3 +28,11 @@
   .terminal-control.underlay, .terminal-tab.underlay, .terminal-tab-container.underlay {
     border: none !important;
   }
+
+  .super-glitch {
+    animation: super-glitch 0.5s infinite;
+  }
+
+  .super-glitch-reverse {
+    animation: super-glitch 0.5s reverse infinite;
+  }

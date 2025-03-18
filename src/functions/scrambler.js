@@ -4,7 +4,6 @@ const chars = '@!<>-_\\/[]{}—=+*^?#________'
 const phrases = [
     'Software Developer',
     'AI Engineer',
-    'Ethical Hacker',
     'Data Analyst'
     ];
 let queue = []
@@ -44,7 +43,7 @@ function update() {
                 char = randomChar()
                 queue[i].char = char
             }
-            output += `<span className="dud">${char}</span>`
+            output += `${char}`
         } else {
             output += from
         }

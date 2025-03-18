@@ -1,4 +1,4 @@
-import '../css/panel.css';
+import '../css/App.css';
 
 function InformationDisplay({ contentID }) {
     let titles = ["Introduction", "Experience", "Projects", "Contact", ""];

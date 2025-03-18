@@ -1,4 +1,4 @@
-import './css/panel.css';
+import './css/App.css';
 import Panel from './components/panel';
 import InformationDisplay from './components/information-display';
 import Terminal from './components/terminal';
@@ -59,15 +59,17 @@ function App() {
   }
 
   useEffect(() => {
-    if (currentPanel === 1 & !scrambling) {
+    if (currentPanel === 1) {
       scramble();
-      setScrambling(true);
-    };
-  }
-  , [currentPanel, scrambling]);
+      setTimeout(() => setScrambling(true), 500);
+    } else {
+      setTimeout(() => setScrambling(false), 500);
+    }
+  }, [currentPanel]);
 
   return (
     <div>
+      <div className='reset-prompt iam hidden'>Screen Compromised. System reset in 3</div>
       <Panel content={panels[0]} index={0} currentPanel={currentPanel}>
         <div className="panel-content-split">
           <div className="grid-box" >
@@ -82,13 +84,14 @@ function App() {
       <Panel content={panels[1]} index={1} currentPanel={currentPanel}>
         <div className="panel-content-split">
           <div className="grid-box" >
-             <Terminal currentPanel={currentPanel} />
+            {currentPanel === 1 && <div className='try-tab glitch'>Try 'error' tab<br/>!! Eplilepsy Warning !!</div>}
+             <Terminal currentPanel={currentPanel} setScrambling={setScrambling} />
           </div>
           <div className="grid-box" >
             <div className='occupation-container'>
               <div className='iam glitch' data-text='I am a'>I am a</div>
                 <div id='scramble' className='occupation glitch' hidden={!scrambling}></div>
-                <div className='error glitch' hidden={scrambling} data-text='E̴̞̿ȑ̸̝r̶̩̐0̷̥̾r̶̰̅ ̶̼̒3̷̢̄ř̶͜ṛ̴̏o̴̺͂r̵̗͒'>E̴̞̿ȑ̸̝r̶̩̐0̷̥̾r̶̰̅ ̶̼̒3̷̢̄ř̶͜ṛ̴̏o̴̺͂r̵̗͒</div>
+                <div className='occupation glitch' hidden={scrambling} data-text='Software Engineer'>Software Engineer</div>
             </div>
           </div>
         </div>

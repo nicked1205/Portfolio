@@ -1,4 +1,4 @@
-import '../css/panel.css';
+import '../css/App.css';
 import { useState } from 'react';
 
 function Panel({ children, content, currentPanel, index }) {
