@@ -93,8 +93,8 @@
 
   .try-tab {
     position: absolute;
-    top: 20%;
-    left: 35%;
+    top: 5%;
+    left: 5%;
     text-align: center;
     transform: rotate(-10deg);
     font-size: 9px;

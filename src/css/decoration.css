@@ -9,3 +9,15 @@
     bottom: 20px;
     left: 20px;
   }
+
+  @media only screen and (orientation: portrait) and (max-width: 600px) {
+    .status, .time {
+      font-size: 12px;
+    }
+  }
+
+  @media only screen and (orientation: landscape) and (max-height: 600px) {
+    .status, .time {
+      font-size: 9px;
+    }
+  }

@@ -42,22 +42,22 @@
     height: 100%;
     flex-direction: column;
     justify-content: space-evenly;
-    padding-top: 100px;
+    padding-top: 16%;
     padding-left: 7%;
     padding-right: 7%;
-    padding-bottom: 50px;
+    padding-bottom: 8%;
 }
 
 .information-title {
     position: absolute;
-    font-size: 14px;
+    font-size: 0.8em;
     text-align: left;
     top: 3%;
     opacity: 0;
 }
 
 .information {
-    font-size: 14px;
+    font-size: 0.8em;
     text-align: left;
     opacity: 0;
 }
@@ -92,4 +92,51 @@
 
 .panel.active .information:nth-child(6) {
     animation-delay: 4s;
+}
+
+@media only screen {
+    @media (max-width: 320px) {
+        .information-title, .information {
+            font-size: 0.6em;
+        }
+    }
+    @media (min-width: 321px) and (max-width: 412px) {
+        .information-title, .information {
+            font-size: 0.55em;
+        }
+    }
+    @media (min-width: 413px) and (max-width: 480px) {
+        .information-title, .information {
+            font-size: 0.6em;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+        .information-title, .information {
+            font-size: 12px;
+        }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .information-title, .information {
+            font-size: 14px;
+        }
+        @media (orientation: landscape) {
+            .information-title, .information {
+                font-size: 10px;
+            }
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1440px) {
+        @media (orientation: landscape) {
+            .information-title, .information {
+                font-size: 0.8em;
+            }
+        }
+    }
+    .information-display, .information-display-underlay {
+        margin: 0px;
+    }
+    .information-container {
+        padding-top: 17%;
+        padding-bottom: 7%;
+    }
 }

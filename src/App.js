@@ -2,6 +2,7 @@ import './css/App.css';
 import Panel from './components/panel';
 import InformationDisplay from './components/information-display';
 import Terminal from './components/terminal';
+import CircularWheel from './components/circular-wheel.js';
 import { useState, useEffect } from 'react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
@@ -72,31 +73,33 @@ function App() {
       <div className='reset-prompt iam hidden'>Screen Compromised. System reset in 3</div>
       <Panel content={panels[0]} index={0} currentPanel={currentPanel}>
         <div className="panel-content-split">
-          <div className="grid-box" >
+          <div className="panel-1 grid-box" >
             <img src={personalPhoto} className='personal-image' alt="personal" />  
             <img src={pinkPersonalPhoto} className='personal-image underlay' alt="personal-underlay" />
           </div>
-          <div className="grid-box" >
+          <div className="panel-1 grid-box" >
             <InformationDisplay contentID={0} />  
           </div>
         </div>
       </Panel>
       <Panel content={panels[1]} index={1} currentPanel={currentPanel}>
         <div className="panel-content-split">
-          <div className="grid-box" >
-            {currentPanel === 1 && <div className='try-tab glitch'>Try 'error' tab<br/>!! Eplilepsy Warning !!</div>}
+          <div className="panel-2 grid-box" >
+            {currentPanel === 1 && <div className='try-tab glitch'>Try 'error' tab<br/>!! Epilepsy Warning !!</div>}
              <Terminal currentPanel={currentPanel} setScrambling={setScrambling} />
           </div>
-          <div className="grid-box" >
+          <div className="panel-2 grid-box" >
             <div className='occupation-container'>
               <div className='iam glitch' data-text='I am a'>I am a</div>
                 <div id='scramble' className='occupation glitch' hidden={!scrambling}></div>
-                <div className='occupation glitch' hidden={scrambling} data-text='Software Engineer'>Software Engineer</div>
+                <div className='occupation glitch' hidden={scrambling} data-text='@!-_\\/—=+*^?#'>@!-_\\/—=+*^?#</div>
             </div>
           </div>
         </div>
       </Panel>
-      <Panel content={panels[2]} index={2} currentPanel={currentPanel}/>
+      <Panel content={panels[2]} index={2} currentPanel={currentPanel}>
+        <CircularWheel/>
+      </Panel>
       <Panel content={panels[3]} index={3} currentPanel={currentPanel}/>
       <Panel content={panels[4]} index={4} currentPanel={currentPanel}/>
       <div className='tracker-container'>

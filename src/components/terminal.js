@@ -22,10 +22,10 @@ function Terminal({currentPanel, setScrambling}) {
         for (let el of matches2) {
             el.classList.remove('grid-box');
         }
-        const glitchable = document.querySelectorAll('.glitch');
-        for (let el of glitchable) el.classList.add('super-glitch');
-        const underlays = document.querySelectorAll('.underlay');
-        for (let el of underlays) el.classList.add('super-glitch');
+        // const glitchable = document.querySelectorAll('.glitch');
+        // for (let el of glitchable) el.classList.add('super-glitch');
+        // const underlays = document.querySelectorAll('.underlay');
+        // for (let el of underlays) el.classList.add('super-glitch');
         const resetPrompt = document.querySelector('.reset-prompt');
         resetPrompt.classList.remove('hidden');
         setTimeout(() => resetPrompt.innerHTML = 'Screen Compromised. System reset in 2', 1500);

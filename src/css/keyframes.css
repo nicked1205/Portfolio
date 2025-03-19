@@ -108,3 +108,10 @@
       opacity: 1;
     }
  }
+
+ @media only screen and (max-width: 480px) {
+   @keyframes openDisplay {
+      0% { height: 0px; }
+   100% { height: 90%; }
+   }
+}

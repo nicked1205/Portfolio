@@ -28,6 +28,7 @@
   display: flex;
   flex: 1;
   height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -124,4 +125,44 @@
   aspect-ratio: 1/1;
   width: 75%;
   left: 12.5%;
+}
+
+@media only screen and (orientation: portrait) {
+  .panel-content-split {
+    flex-direction: column;
+  }
+
+  .panel-1.grid-box:nth-child(1) {
+    flex-grow: 1;
+  }
+
+  .panel-1.grid-box:nth-child(2) {
+    flex-grow: 2.5;
+    bottom: 30px;
+  }
+
+  .personal-image {
+    width: 36%;
+    left: 32%;
+  }
+
+  @media (max-width: 767px) {
+    .personal-image {
+      width: 45%;
+      left: 27.5%;
+    }
+
+    .tracker button {
+      padding: 8px;
+    }
+    
+    .tracker {
+      padding: 20px;
+    }
+
+    .tracker button:hover::before {
+      opacity: 0;
+      right: 0;
+    }
+  }
 }
