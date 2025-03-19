@@ -102,3 +102,49 @@
     padding: 10px;
     animation: blinkIn 2s linear;
   }
+
+  @media only screen {
+    @media (max-width: 320px) {
+      .user {
+        width: 0px;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      .terminal-text {
+        font-size: 6px;
+      }
+      .terminal-tab {
+        font-size: 6px;
+      }
+    }
+    @media (min-width: 321px) and (max-width: 480px) {
+      .user {
+        width: 0px;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      .terminal-text {
+        font-size: 8px;
+      }
+      .terminal-tab {
+        font-size: 6px;
+      }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+      .user {
+        width: 0px;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      .terminal-text {
+        font-size: 10px;
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+      .user {
+        width: 0px;
+        overflow: hidden;
+        visibility: hidden;
+      }
+    }
+}

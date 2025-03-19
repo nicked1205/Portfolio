@@ -47,7 +47,6 @@
 }
 
 .occupation {
-  line-height: 50px;
   font-size: 35px;
 }
 
@@ -141,9 +140,22 @@
     bottom: 30px;
   }
 
+  .panel-2.grid-box:nth-child(1) {
+    flex-grow: 2;
+    order: 2;
+  }
+
+  .panel-2.grid-box:nth-child(2) {
+    order: 1;
+  }
+
   .personal-image {
     width: 36%;
     left: 32%;
+  }
+
+  .occupation-container {
+    text-align: center;
   }
 
   @media (max-width: 767px) {
@@ -163,6 +175,15 @@
     .tracker button:hover::before {
       opacity: 0;
       right: 0;
+    }
+
+    .iam {
+      font-size: 20px;
+    }
+
+    .occupation {
+      font-size: 30px;
+      padding: 0px 10px;
     }
   }
 }

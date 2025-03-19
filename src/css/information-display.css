@@ -50,14 +50,14 @@
 
 .information-title {
     position: absolute;
-    font-size: 0.8em;
+    font-size: 0.8vw;
     text-align: left;
     top: 3%;
     opacity: 0;
 }
 
 .information {
-    font-size: 0.8em;
+    font-size: 0.8vw;
     text-align: left;
     opacity: 0;
 }
@@ -97,17 +97,17 @@
 @media only screen {
     @media (max-width: 320px) {
         .information-title, .information {
-            font-size: 0.6em;
+            font-size: 7px;
         }
     }
     @media (min-width: 321px) and (max-width: 412px) {
         .information-title, .information {
-            font-size: 0.55em;
+            font-size: 8px;
         }
     }
     @media (min-width: 413px) and (max-width: 480px) {
         .information-title, .information {
-            font-size: 0.6em;
+            font-size: 9px;
         }
     }
     @media (min-width: 481px) and (max-width: 768px) {
@@ -128,15 +128,14 @@
     @media (min-width: 1025px) and (max-width: 1440px) {
         @media (orientation: landscape) {
             .information-title, .information {
-                font-size: 0.8em;
+                font-size: 12px;
             }
         }
     }
-    .information-display, .information-display-underlay {
-        margin: 0px;
-    }
-    .information-container {
-        padding-top: 17%;
-        padding-bottom: 7%;
+
+    @media (orientation: portrait) {
+        .information-display, .information-display-underlay {
+            margin: 0px;
+        }
     }
 }

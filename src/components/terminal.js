@@ -60,7 +60,7 @@ function Terminal({currentPanel, setScrambling}) {
                 </div>
             </div>
             <div className='content-horizontal'>
-                <div className='terminal-text glitch' data-text={`nick@adudeslaptop:~$\n${tab === 0 ? 'nick@adudeslaptop:~$' : ''}`}>
+                <div className='terminal-text user glitch' data-text={`nick@adudeslaptop:~$\n${tab === 0 ? 'nick@adudeslaptop:~$' : ''}`}>
                     nick@adudeslaptop:~$ <br/>
                     {tab === 0 && 'nick@adudeslaptop:~$'}
                 </div>
