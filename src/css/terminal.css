@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    padding: 35px 10px;
+    padding: 5vh 10px;
     width: 70%;
     aspect-ratio: 4/3;
     border: var(--glitch-green) 1px solid;
@@ -105,46 +105,35 @@
 
   @media only screen {
     @media (max-width: 320px) {
-      .user {
-        width: 0px;
-        overflow: hidden;
-        visibility: hidden;
-      }
       .terminal-text {
         font-size: 6px;
       }
       .terminal-tab {
-        font-size: 6px;
+        font-size: 5px;
+      }
+      .terminal {
+        padding: 20px 10px;
       }
     }
     @media (min-width: 321px) and (max-width: 480px) {
-      .user {
-        width: 0px;
-        overflow: hidden;
-        visibility: hidden;
-      }
       .terminal-text {
         font-size: 8px;
       }
       .terminal-tab {
         font-size: 6px;
       }
+      .terminal {
+        padding: 20px 10px;
+      }
     }
     @media (min-width: 481px) and (max-width: 768px) {
-      .user {
-        width: 0px;
-        overflow: hidden;
-        visibility: hidden;
-      }
       .terminal-text {
         font-size: 10px;
       }
     }
     @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-      .user {
-        width: 0px;
-        overflow: hidden;
-        visibility: hidden;
+      .terminal-text {
+        font-size: 8px;
       }
     }
 }

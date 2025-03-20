@@ -109,6 +109,22 @@
     }
  }
 
+ @keyframes openTimeline {
+   0% {
+      width: 0%;
+   }
+   100% {
+      width: 80%;
+   }
+ }
+
+ @keyframes ping {
+   75%, 100% {
+     width: 100%;
+     opacity: 0;
+   }
+ }
+
  @media only screen and (max-width: 480px) {
    @keyframes openDisplay {
       0% { height: 0px; }

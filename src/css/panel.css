@@ -47,12 +47,8 @@
 }
 
 .occupation {
-  font-size: 35px;
-}
-
-.error {
-  font-size: 100px;
-  text-shadow: 0 0 7px var(--glitch-green) !important;
+  font-size: 2.2vw;
+  padding-right: 35px;
 }
 
 .tracker-container {
@@ -156,6 +152,7 @@
 
   .occupation-container {
     text-align: center;
+    padding-left: 20px;
   }
 
   @media (max-width: 767px) {
@@ -182,8 +179,26 @@
     }
 
     .occupation {
-      font-size: 30px;
-      padding: 0px 10px;
+      font-size: 25px;
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .iam {
+      font-size: 15px;
+    }
+    .occupation {
+      font-size: 20px;
+    }
+  }
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .iam {
+      font-size: 23px;
+    }
+    .occupation {
+      font-size: 28px;
     }
   }
 }

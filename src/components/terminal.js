@@ -1,5 +1,5 @@
 import '../css/App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import HelloWorld from '../resources/HelloWorld.png';
 
 function Terminal({currentPanel, setScrambling}) {
@@ -60,9 +60,9 @@ function Terminal({currentPanel, setScrambling}) {
                 </div>
             </div>
             <div className='content-horizontal'>
-                <div className='terminal-text user glitch' data-text={`nick@adudeslaptop:~$\n${tab === 0 ? 'nick@adudeslaptop:~$' : ''}`}>
-                    nick@adudeslaptop:~$ <br/>
-                    {tab === 0 && 'nick@adudeslaptop:~$'}
+                <div className='terminal-text user glitch' data-text={`>>\n${tab === 0 ? '>>' : ''}`}>
+                    &gt;&gt; <br/>
+                    {tab === 0 && <>&gt;&gt;</>}
                 </div>
                 {currentPanel === 1 && (
                 <div className='terminal-text-container'>

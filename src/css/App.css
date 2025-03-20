@@ -4,11 +4,12 @@
 @import 'decoration.css';
 @import 'terminal.css';
 @import 'panel.css';
-@import 'circular-wheel.css';
+@import 'timeline.css';
 
 :root {
   --glitch-green: #4AF626;
   --glitch-pink: #e627a0;
+  --glitch-green-bg: rgb(74 246 38/ 0.2);
 }
 
 * {
@@ -48,6 +49,7 @@ html, body {
       transparent 4px
     );
     animation: scanLines 1s linear infinite;
+    z-index: 2;
   }
 
 .content-horizontal {

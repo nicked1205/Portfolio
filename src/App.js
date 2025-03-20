@@ -2,7 +2,7 @@ import './css/App.css';
 import Panel from './components/panel';
 import InformationDisplay from './components/information-display';
 import Terminal from './components/terminal';
-import CircularWheel from './components/circular-wheel.js';
+import Timeline from './components/timeline.js';
 import { useState, useEffect } from 'react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
@@ -98,7 +98,7 @@ function App() {
         </div>
       </Panel>
       <Panel content={panels[2]} index={2} currentPanel={currentPanel}>
-        <CircularWheel/>
+        <Timeline currentPanel={currentPanel}/>
       </Panel>
       <Panel content={panels[3]} index={3} currentPanel={currentPanel}/>
       <Panel content={panels[4]} index={4} currentPanel={currentPanel}/>

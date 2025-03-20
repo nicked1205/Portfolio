@@ -50,14 +50,14 @@
 
 .information-title {
     position: absolute;
-    font-size: 0.8vw;
+    font-size: 14px;
     text-align: left;
     top: 3%;
     opacity: 0;
 }
 
 .information {
-    font-size: 0.8vw;
+    font-size: 14px;
     text-align: left;
     opacity: 0;
 }
