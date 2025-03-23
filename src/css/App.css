@@ -5,6 +5,7 @@
 @import 'terminal.css';
 @import 'panel.css';
 @import 'timeline.css';
+@import 'experience-display.css';
 
 :root {
   --glitch-green: #4AF626;

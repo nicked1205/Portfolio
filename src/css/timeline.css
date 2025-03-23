@@ -73,7 +73,7 @@
     animation-delay: 2.6s
 }
 
-.timeline-marker-0, .timeline-marker-1, .timeline-marker-2, .timeline-marker-3, .timeline-marker-4 {
+.timeline-marker {
     aspect-ratio: 1/1;
     height: 20%;
     border-radius: 50%;
@@ -89,8 +89,7 @@
     display: flex;
 }
 
-.timeline-marker-0:hover, .timeline-marker-1:hover, .timeline-marker-2:hover, .timeline-marker-3:hover, .timeline-marker-4:hover,
-.timeline-marker-0.on, .timeline-marker-1.on, .timeline-marker-2.on, .timeline-marker-3.on, .timeline-marker-4.on {
+.timeline-marker:hover, .timeline-marker.on {
     height: 35%;
     background-color: #111;
     cursor: pointer;
@@ -145,28 +144,18 @@
     border-radius: 50%;
 }
 
-.timeline-marker-0.on .timeline-marker-center, .timeline-marker-1.on .timeline-marker-center, .timeline-marker-2.on .timeline-marker-center, .timeline-marker-3.on .timeline-marker-center, .timeline-marker-4.on .timeline-marker-center {
+.timeline-marker .timeline-marker-center {
     animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.timeline-marker-0:hover .timeline-marker-center, .timeline-marker-1:hover .timeline-marker-center, .timeline-marker-2:hover .timeline-marker-center, .timeline-marker-3:hover .timeline-marker-center, .timeline-marker-4:hover .timeline-marker-center {
+.timeline-marker:hover .timeline-marker-center {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.timeline-marker-0.on .timeline-marker-center:nth-child(1), .timeline-marker-1.on .timeline-marker-center:nth-child(1), .timeline-marker-2.on .timeline-marker-center:nth-child(1), .timeline-marker-3.on .timeline-marker-center:nth-child(1), .timeline-marker-4.on .timeline-marker-center:nth-child(1) {
+.timeline-marker.on .timeline-marker-center:nth-child(1) {
     animation: ping 2s cubic-bezier(0, 0, 0.2, 1) 0.6s infinite;
 }
 
-.timeline-marker-0:hover .timeline-marker-center:nth-child(1), .timeline-marker-1:hover .timeline-marker-center:nth-child(1), .timeline-marker-2:hover .timeline-marker-center:nth-child(1), .timeline-marker-3:hover .timeline-marker-center:nth-child(1), .timeline-marker-4:hover .timeline-marker-center:nth-child(1) {
+.timeline-marker:hover .timeline-marker-center:nth-child(1) {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 0.3s infinite;
-}
-
-.experience-display {
-    position: fixed;
-    width: 70% !important;
-    height: 80% !important;
-    margin: 0px !important;
-    top: 12%;
-    left: 15%;
-    border: var(--glitch-green) 1px solid;
 }

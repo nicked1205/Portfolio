@@ -5,8 +5,7 @@ function InformationDisplay({ contentID }) {
     let contents = [["Name: Cat Tuong Anh Nguyen","Age: 21",
         "Description: Working on the Bachelor of Science degree from the University of Melbourne, and developing Computing and Software Systems knowledge through internships and personal projects.",
         "Take pride on positive respond to criticism, will to learn, to become better despite what to come, and ability to adapt.", 
-        "Life motto: “It’s better to light a candle than to curse the darkness.” - By William Lonsdale Atkinson."]
-    , [""], "", "", ""];
+        "Life motto: “It’s better to light a candle than to curse the darkness.” - By William Lonsdale Atkinson."]];
 
     const formattedContent = 
         <div className='information-container'>
