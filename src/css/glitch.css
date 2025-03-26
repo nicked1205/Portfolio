@@ -11,22 +11,29 @@
  }
 
   .panel.active .glitch:before, .panel.active .personal-image-underlay, .panel.active .terminal.underlay, .panel.active .terminal-control.underlay,
-  .panel.active .terminal-tab.underlay, .panel.active .terminal-tab-container.underlay, .panel.active .personal-image.underlay {
+  .panel.active .terminal-tab.underlay, .panel.active .terminal-tab-container.underlay, .panel.active .personal-image.underlay, .panel.active .project-display.underlay, .panel.active .project-display-top.underlay, .panel.active .project-info.underlay, .panel.active .project-card.underlay, .panel.active .github-btn.underlay, .panel.active .web-btn.underlay {
     animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2;
   }
 
   .underlay {
     z-index: -1 !important;
-    color: var(--glitch-pink) !important;
     opacity: 0.8;
   }
 
-  .terminal.underlay {
+  .terminal.underlay, .project-display.underlay, .decorative-bar.underlay, .project-card.underlay, .github-btn.underlay, .web-btn.underlay {
     border: var(--glitch-pink) 1px solid !important;
   }
 
   .terminal-control.underlay, .terminal-tab.underlay, .terminal-tab-container.underlay {
     border: none !important;
+  }
+
+  .project-display-top.underlay {
+    border-bottom: var(--glitch-pink) 1px solid;
+  }
+
+  .project-info.underlay {
+    border-right: var(--glitch-pink) 1px solid;
   }
 
   .super-glitch {
@@ -36,3 +43,10 @@
   .super-glitch-reverse {
     animation: super-glitch 0.5s reverse infinite;
   }
+
+  @media only screen and (max-width: 480px) {
+    .project-info.underlay {
+        border-right: none;
+        border-bottom: var(--glitch-pink) 1px solid;
+    }
+}

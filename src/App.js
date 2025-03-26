@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
 import { scramble } from './functions/scrambler.js';
+import ProjectDisplay from './components/project-display.js';
 
 function App() {
   let panels = ["Introduction", "Roles", "Experience", "Projects", "Contact"];
@@ -100,7 +101,9 @@ function App() {
       <Panel content={panels[2]} index={2} currentPanel={currentPanel}>
         <Timeline currentPanel={currentPanel}/>
       </Panel>
-      <Panel content={panels[3]} index={3} currentPanel={currentPanel}/>
+      <Panel content={panels[3]} index={3} currentPanel={currentPanel}>
+        <ProjectDisplay/>
+      </Panel>
       <Panel content={panels[4]} index={4} currentPanel={currentPanel}/>
       <div className='tracker-container'>
         <div className="tracker">

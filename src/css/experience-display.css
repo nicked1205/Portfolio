@@ -35,5 +35,15 @@
 }
 
 .experience-container .information {
-    animation-delay: 2.5s !important;
+    animation-delay: 2.0s !important;
+}
+
+@media only screen and (max-width: 480px) {
+    .experience-display-container {
+        width: 80%;
+        left: 10%;
+    }
+    .experience-container {
+        padding: 10% 10%;
+    }
 }

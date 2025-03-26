@@ -6,11 +6,14 @@
 @import 'panel.css';
 @import 'timeline.css';
 @import 'experience-display.css';
+@import 'project-display.css';
+@import 'project-card.css';
 
 :root {
   --glitch-green: #4AF626;
   --glitch-pink: #e627a0;
-  --glitch-green-bg: rgb(74 246 38/ 0.2);
+  --glitch-green-bg: rgb(74 246 38/ 0.1);
+  --border: var(--glitch-green) 1px solid;
 }
 
 * {

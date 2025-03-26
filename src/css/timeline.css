@@ -9,7 +9,7 @@
 .timeline {
     height: 0%;
     width: 0;
-    border: var(--glitch-green) 1px solid;
+    border: var(--border);
     margin: 0px 10vw;
 }
 
@@ -21,7 +21,7 @@
     position: absolute;
     height: 15%;
     width: 0%;
-    border: var(--glitch-green) 1px solid;
+    border: var(--border);
 }
 
 .timeline-year-marker-0::after, .timeline-year-marker-1::after, .timeline-year-marker-2::after, .timeline-year-marker-3::after {
@@ -81,7 +81,7 @@
     background-color: var(--glitch-green);
     transform: translateX(-50%);
     pointer-events: auto !important;
-    border: var(--glitch-green) 1px solid;
+    border: var(--border);
     transition: 0.3s ease-in-out;
     opacity: 0;
     justify-content: center;
@@ -137,7 +137,7 @@
 
 .timeline-marker-center {
     position: absolute;
-    border: var(--glitch-green) 1px solid;
+    border: var(--border);
     background-color: var(--glitch-green);
     width: 0%;
     aspect-ratio: 1/1;
