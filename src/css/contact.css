@@ -1,0 +1,198 @@
+.contact-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    aspect-ratio: 1/1;
+    height: 100%;
+}
+
+.contact-menu {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background-color: var(--glitch-green-bg);
+    border: var(--border);
+    transition: 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.contact-menu:hover {
+    cursor: pointer;
+}
+
+.contact-menu.on {
+    width: 15vw;
+    height: 15vw;
+}
+
+.contact-menu-center {
+    position: absolute;
+    border: var(--border);
+    background-color: var(--glitch-green);
+    width: 0%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.contact-menu-center {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.contact-menu-center:nth-child(1) {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) 0.6s infinite;
+}
+
+.contact-menu:hover .contact-menu-center {
+    animation: ping 0.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.contact-menu.on .contact-menu-center:nth-child(1) {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) 0.6s infinite;
+}
+
+.contact-menu:hover .contact-menu-center:nth-child(1) {
+    animation: ping 0.8s cubic-bezier(0, 0, 0.2, 1) 0.2s infinite;
+}
+
+.linkedin-button, .github-button, .email-button {
+    z-index: -2;
+    position: absolute;
+    border: var(--border);
+    aspect-ratio: 1/1;
+    height: 10vw;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    &:hover {
+        background-color: var(--glitch-green-bg);
+    }
+}
+
+.contact-menu.on .linkedin-button {
+    translate: calc(80% * sqrt(3)) 80%;
+    opacity: 1;
+}
+
+.contact-menu.on .email-button {
+    translate: 0 -160%;
+    opacity: 1;
+}
+
+.contact-menu.on .github-button {
+    translate: calc(-80% * sqrt(3)) 80%;
+    opacity: 1;
+}
+
+.contact-menu.close {
+    animation: closeMenu 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+}
+
+.contact-menu.open {
+    animation: openMenu 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
+}
+
+.contact-menu.close .contact-menu-center {
+    opacity: 0;
+}
+
+.contact-form-container {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form {
+    border-radius: 2rem;
+    overflow: hidden;
+    width: 0%;
+    height: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.contact-form.open {
+    animation: openForm 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.5S forwards;
+}
+
+.contact-form.close {
+    animation: closeForm 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+
+.name-input, .email-input, .content-input {
+    all: unset;
+    width: 100%;
+    background-color: var(--glitch-green-bg);
+    border-radius: 0.5rem;
+    padding: 2%;
+    caret-color: var(--glitch-green);
+    opacity: 0;
+    &::placeholder {
+        opacity: 0.3;
+        color: var(--glitch-green);
+    }
+    &:focus {
+        border: var(--border);
+    }
+}
+
+.contact-form.open .name-input {
+    animation: blinkIn 0.5s linear 1.3s forwards;
+}
+
+.contact-form.open .email-input {
+    animation: blinkIn 0.5s linear 1.7s forwards;
+}
+
+.contact-form.open .content-input {
+    animation: blinkIn 0.5s linear 2.1s forwards;
+}
+
+.content-input {
+    flex: 1;
+}
+
+.submit-button {
+    all: unset;
+    padding: 1%;
+    border-radius: 0.5rem;
+    width: 15%;
+    overflow: hidden;
+    text-align: center;
+    background-color: var(--glitch-green-bg);
+    color: var(--glitch-green);
+    font-size: 12px;
+    opacity: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.contact-form.open .submit-button {
+    animation: blinkIn 0.5s linear 2.5s forwards;
+}
+
+.panel.active .contact-menu, .panel.active .submit-button, .panel.active .name-input, .panel.active .email-input, .panel.active .content-input {
+    pointer-events: auto !important;
+}
+
+.contact-menu.on .github-button, .contact-menu.on .linkedin-button, .contact-menu.on .email-button {
+    pointer-events: auto !important;
+}

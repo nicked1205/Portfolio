@@ -42,7 +42,7 @@
   
   .terminal-tab.inactive {
     opacity: 20%;
-    pointer-events: auto !important;
+    .panel.active & {pointer-events: auto !important;}
   }
   
   .terminal-control-container {

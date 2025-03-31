@@ -1,18 +1,21 @@
 import '../css/App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Panel({ children, content, currentPanel, index }) {
-  const [Hours, setHours] = useState(0);
-  const [Minutes, setMinutes] = useState(0);
-  const [Seconds, setSeconds] = useState(0); 
-  setInterval(myTimer, 200);
+  const [Hours, setHours] = useState('00');
+  const [Minutes, setMinutes] = useState('00');
+  const [Seconds, setSeconds] = useState('00');
 
-function myTimer() {
-  const d = new Date();
-  setHours(d.getHours());
-  setMinutes(d.getMinutes());
-  setSeconds(d.getSeconds());
-}
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const d = new Date();
+      setHours(String(d.getHours()).padStart(2, '0'));
+      setMinutes(String(d.getMinutes()).padStart(2, '0'));
+      setSeconds(String(d.getSeconds()).padStart(2, '0'));
+    }, 200);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div  className={`panel ${currentPanel === index ? "active" : "inactive"}`}>

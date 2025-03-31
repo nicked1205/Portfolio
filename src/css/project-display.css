@@ -48,12 +48,14 @@
     aspect-ratio: 1/1;
     top: 50%;
     translate: 0 -50%;
-    pointer-events: auto !important;
     opacity: 30%;
     transition: 0.2s linear;
     &:hover {
         opacity: 60%;
         cursor: pointer;
+    }
+    .panel.active & {
+        pointer-events: auto !important;
     }
 }
 

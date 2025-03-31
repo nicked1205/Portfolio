@@ -20,11 +20,11 @@
 }
 
 .experience-display.open {
-    animation: openExperience 0.7s linear 0.5s forwards;
+    animation: openExperience 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s forwards;
 }
 
 .experience-display.close {
-    animation: closeExperience 0.7s linear forwards;
+    animation: closeExperience 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 
 .experience-container {

@@ -39,8 +39,10 @@
     border: var(--border);
     height: 100%;
     padding: 5px 10px;
-    pointer-events: auto !important;
     transition: 0.2s linear;
+    .panel.active & {
+        pointer-events: auto !important;
+    }
 }
 
 .github-btn:hover, .web-btn:hover {
