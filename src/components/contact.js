@@ -22,7 +22,7 @@ function Contact({currentPanel}) {
 
     const handleClickEmail = () => {
       setOpenMenu(false)
-      setCid(setTimeout(() => setOpenInputs(true), 600))
+      setCid(setTimeout(() => setOpenInputs(true), 100))
     }
 
     useEffect(() => {
