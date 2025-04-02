@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import '../css/App.css';
-import axios from 'axios'
+import emailjs from 'emailjs-com';
 
 function Contact({currentPanel}) {
     const [openMenu, setOpenMenu] = useState(false)
@@ -37,17 +37,25 @@ function Contact({currentPanel}) {
 
     const form = useRef();
 
-    const sendEmail = async (e) => {
-      e.preventDefault();
+    const sendEmail = (e) => {
+      e.preventDefault();  // Prevent default form submission behavior
   
-      const formData = new FormData(form.current);
+      const formData = new FormData(form.current);  // Grab the form data
   
-      try {
-        const response = await axios.post('/api/send-email', formData);
-        console.log('Message sent successfully!');
-      } catch (error) {
-        console.log('There was an error sending the message.');
-      }
+      emailjs
+        .sendForm('service_q6v9kvs', 'template_1xe3mrb', form.current, '1Tt4OCNr7LlQot-_J')
+        .then(
+          (result) => {
+            console.log(result.text);
+            console.log('Message sent successfully!');
+          },
+          (error) => {
+            console.log(error.text);
+            console.log('There was an error sending the message.');
+          }
+        );
+  
+      e.target.reset(); // Reset form after submission
     };
 
 
@@ -92,10 +100,23 @@ function Contact({currentPanel}) {
         <form ref={form} onSubmit={sendEmail} className={`contact-form ${openInputs ? 'open' : 'close'}`}>
           { openInputs && (
             <>
-              <input className='name-input' placeholder='Name'></input>
-              <input className='email-input' placeholder='Email'></input>
-              <textarea className='content-input' placeholder='Message'></textarea>
-              <button className='submit-button'>Submit</button>
+              <input type='text' name='name' className='name-input' placeholder='Name'></input>
+              <input type='email' name='email' className='email-input' placeholder='Email'></input>
+              <textarea name='message' className='content-input' placeholder='Message'></textarea>
+              <div className='submit-button-container'>
+                <button className='submit-button'>Submit</button>
+                <div className='back-btn' onClick={() => setOpenInputs(false)}>
+                  <svg fill="#4AF626" version="1.1" id="Capa_1" viewBox="0 0 489.394 489.394" stroke="#4AF626">
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"> 
+                      <g> 
+                        <path d="M375.789,92.867H166.864l17.507-42.795c3.724-9.132,1-19.574-6.691-25.744c-7.701-6.166-18.538-6.508-26.639-0.879 L9.574,121.71c-6.197,4.304-9.795,11.457-9.563,18.995c0.231,7.533,4.261,14.446,10.71,18.359l147.925,89.823 c8.417,5.108,19.18,4.093,26.481-2.499c7.312-6.591,9.427-17.312,5.219-26.202l-19.443-41.132h204.886 c15.119,0,27.418,12.536,27.418,27.654v149.852c0,15.118-12.299,27.19-27.418,27.19h-226.74c-20.226,0-36.623,16.396-36.623,36.622 v12.942c0,20.228,16.397,36.624,36.623,36.624h226.74c62.642,0,113.604-50.732,113.604-113.379V206.709 C489.395,144.062,438.431,92.867,375.789,92.867z"></path> 
+                      </g> 
+                    </g>
+                  </svg>
+                </div>
+              </div>
             </>
           )}
         </form>

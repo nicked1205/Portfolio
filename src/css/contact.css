@@ -181,8 +181,17 @@
     flex: 1;
 }
 
+.submit-button-container {
+    position: relative;
+    height: 8%;
+    width: 100%;
+}
+
 .submit-button {
     all: unset;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
     padding: 1%;
     border-radius: 0.5rem;
     width: 15%;
@@ -199,11 +208,28 @@
     }
 }
 
+.back-btn {
+    position: absolute;
+    right: 0%;
+    aspect-ratio: 1/1;
+    height: 100%;
+    opacity: 0.4;
+    transition: 0.2s ease-out;
+    &:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+}
+
 .contact-form.open .submit-button {
     animation: blinkIn 0.5s linear 2.5s forwards;
 }
 
-.panel.active .contact-menu, .panel.active .submit-button, .panel.active .name-input, .panel.active .email-input, .panel.active .content-input {
+.panel.active .contact-menu {
+    pointer-events: auto !important;
+}
+
+.contact-form.open .back-btn, .contact-form.open .submit-button, .contact-form.open .name-input, .contact-form.open .email-input, .contact-form.open .content-input {
     pointer-events: auto !important;
 }
 
