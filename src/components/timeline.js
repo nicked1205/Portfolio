@@ -20,6 +20,7 @@ function Timeline({currentPanel}) {
             if (mid) clearTimeout(mid);
             setMark(-1);
         }
+        // eslint-disable-next-line
     }, [currentPanel])
 
     const handleClick = () => {

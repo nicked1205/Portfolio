@@ -63,6 +63,7 @@
 }
 
 .linkedin-button, .github-button, .email-button {
+    display: flex;
     z-index: -2;
     position: absolute;
     border: var(--border);
@@ -71,6 +72,9 @@
     border-radius: 50%;
     opacity: 0;
     transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    padding: 13%;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         background-color: var(--glitch-green-bg);
@@ -117,7 +121,7 @@
 }
 
 .contact-form {
-    border-radius: 2rem;
+    border-radius: 3rem;
     overflow: hidden;
     width: 0%;
     height: 0%;
@@ -126,6 +130,9 @@
     justify-content: center;
     align-items: center;
     gap: 5%;
+    background-image: url(../resources/contact-display.png);
+    background-size: 100% 100%;
+    background-color: rgb(74 246 38/ 0.05);
 }
 
 .contact-form.open {
@@ -144,6 +151,7 @@
     padding: 2%;
     caret-color: var(--glitch-green);
     opacity: 0;
+    color: var(--glitch-green);
     &::placeholder {
         opacity: 0.3;
         color: var(--glitch-green);
@@ -151,6 +159,10 @@
     &:focus {
         border: var(--border);
     }
+}
+
+.content-input {
+    word-wrap: break-word;
 }
 
 .contact-form.open .name-input {
@@ -180,7 +192,9 @@
     color: var(--glitch-green);
     font-size: 12px;
     opacity: 0;
+    transition: 0.2s ease-out;
     &:hover {
+        background-color: rgb(74 246 38/ 0.3);
         cursor: pointer;
     }
 }

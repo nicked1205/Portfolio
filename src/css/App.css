@@ -13,7 +13,7 @@
 :root {
   --glitch-green: #4AF626;
   --glitch-pink: #e627a0;
-  --glitch-green-bg: rgb(74 246 38/ 0.1);
+  --glitch-green-bg: rgb(74 246 38/ 0.2);
   --border: var(--glitch-green) 1px solid;
 }
 

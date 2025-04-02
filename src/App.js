@@ -18,7 +18,14 @@ function App() {
   const [scrambling, setScrambling] = useState(false);
 
   useEffect(() => {
-    const preventScroll = (event) => event.preventDefault();
+    const preventScroll = (event) => {
+      const isInputElement = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)  ||
+        document.activeElement.isContentEditable;
+      
+      if (!isInputElement) {
+        event.preventDefault();
+      }
+    };
     window.addEventListener("wheel", preventScroll, { passive: false });
     window.addEventListener("touchmove", preventScroll, { passive: false });
     window.addEventListener("keydown", preventScroll, { passive: false });
@@ -27,6 +34,13 @@ function App() {
     window.addEventListener("resize", handleResize);
 
     const handleScroll = (event) => {
+      const isInputElement = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) ||
+      document.activeElement.isContentEditable;
+        
+      if (isInputElement) {
+        return;
+      }
+
       if (isScrolling) return;
       setIsScrolling(true);
 

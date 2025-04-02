@@ -49,7 +49,7 @@ function Terminal({currentPanel, setScrambling}) {
 
     return (
     ['', ' underlay'].map((className, index) => (
-        <div className={`terminal${className}`}>
+        <div key={index} className={`terminal${className}`}>
             <div className={`terminal-tab-container${className}`}>
                 <div className={`terminal-tab ${tab === 0 ? 'active' : 'inactive'}${className}`} onClick={() => handleChangeTab()}>coolstuff</div>
                 <div className={`terminal-tab ${tab === 1 ? 'active' : 'inactive'}${className}`} onClick={() => handleChangeTab()}>error</div>
