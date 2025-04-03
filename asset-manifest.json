@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.0f6a4972.css",
-    "main.js": "/Portfolio/static/js/main.add9d85e.js",
-    "static/media/HelloWorld.png": "/Portfolio/static/media/HelloWorld.b9e892241222bbb18fa7.png",
-    "static/media/pink-personal-photo.png": "/Portfolio/static/media/pink-personal-photo.d4a8ad02793d1c86299d.png",
-    "static/media/glow-personal-photo.png": "/Portfolio/static/media/glow-personal-photo.5f82b26132a834057ef1.png",
-    "static/media/PressStart2P-Regular.ttf": "/Portfolio/static/media/PressStart2P-Regular.21503c6a5385ab41dde9.ttf",
-    "static/media/information-display-underlay.png": "/Portfolio/static/media/information-display-underlay.ea0613dcb6ebf1fd4cf0.png",
-    "static/media/information-display.png": "/Portfolio/static/media/information-display.aa8b0109a312cd7ceb03.png",
-    "static/media/experience-display.png": "/Portfolio/static/media/experience-display.0cdcf7b6faaf63de753d.png",
-    "index.html": "/Portfolio/index.html"
+    "main.css": "/static/css/main.0e31a8f8.css",
+    "main.js": "/static/js/main.7a554f91.js",
+    "static/media/HelloWorld.png": "/static/media/HelloWorld.b9e892241222bbb18fa7.png",
+    "static/media/pink-personal-photo.png": "/static/media/pink-personal-photo.d4a8ad02793d1c86299d.png",
+    "static/media/glow-personal-photo.png": "/static/media/glow-personal-photo.5f82b26132a834057ef1.png",
+    "static/media/PressStart2P-Regular.ttf": "/static/media/PressStart2P-Regular.21503c6a5385ab41dde9.ttf",
+    "static/media/information-display-underlay.png": "/static/media/information-display-underlay.ea0613dcb6ebf1fd4cf0.png",
+    "static/media/information-display.png": "/static/media/information-display.aa8b0109a312cd7ceb03.png",
+    "static/media/experience-display.png": "/static/media/experience-display.0cdcf7b6faaf63de753d.png",
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.0f6a4972.css",
-    "static/js/main.add9d85e.js"
+    "static/css/main.0e31a8f8.css",
+    "static/js/main.7a554f91.js"
   ]
 }
