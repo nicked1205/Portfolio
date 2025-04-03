@@ -36,7 +36,7 @@ function ProjectDisplay() {
                             {projects.map((projects, index) => {
                                 return (
                                 <SwiperSlide key={index}>
-                                    <ProjectCard githubUrl='.' webUrl='.'/>
+                                    <ProjectCard githubUrl='.'/>
                                 </SwiperSlide>
                             )})}
                         </Swiper>

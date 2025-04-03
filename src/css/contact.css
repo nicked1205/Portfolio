@@ -16,7 +16,7 @@
     width: 10vw;
     height: 10vw;
     border-radius: 50%;
-    background-color: var(--glitch-green-bg);
+    background-color: rgb(74 246 38/ 0.2);
     border: var(--border);
     transition: 0.3s ease-in-out;
     justify-content: center;
@@ -208,6 +208,10 @@
     }
 }
 
+.back-btn-container {
+    opacity: 0;
+}
+
 .back-btn {
     position: absolute;
     right: 0%;
@@ -225,6 +229,10 @@
     animation: blinkIn 0.5s linear 2.5s forwards;
 }
 
+.contact-form.open .back-btn-container {
+    animation: blinkIn 0.5s linear 2.9s forwards;
+}
+
 .panel.active .contact-menu {
     pointer-events: auto !important;
 }
@@ -235,4 +243,15 @@
 
 .contact-menu.on .github-button, .contact-menu.on .linkedin-button, .contact-menu.on .email-button {
     pointer-events: auto !important;
+}
+
+.sent {
+    color: var(--glitch-green);
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+
+.submit-button-container .information {
+    animation-delay: 0.1s !important;
 }

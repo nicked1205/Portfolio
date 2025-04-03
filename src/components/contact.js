@@ -3,9 +3,11 @@ import '../css/App.css';
 import emailjs from 'emailjs-com';
 
 function Contact({currentPanel}) {
-    const [openMenu, setOpenMenu] = useState(false)
-    const [openInputs, setOpenInputs] = useState(false)
-    const [cid, setCid] = useState()
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openInputs, setOpenInputs] = useState(false);
+    const [cid, setCid] = useState();
+    const [status, setStatus] = useState(0);
+    const [message, setMessage] = useState('');
 
     const handleClickLinkedIn = () => {
       if (openMenu) {
@@ -30,6 +32,7 @@ function Contact({currentPanel}) {
       if (currentPanel !== 4) {
         setOpenMenu(false);
         setOpenInputs(false);
+        setStatus(0);
         clearTimeout(cid);
       }
       // eslint-disable-next-line
@@ -38,24 +41,52 @@ function Contact({currentPanel}) {
     const form = useRef();
 
     const sendEmail = (e) => {
-      e.preventDefault();  // Prevent default form submission behavior
+      e.preventDefault();
   
-      const formData = new FormData(form.current);  // Grab the form data
+      const formData = new FormData(form.current);
+      const email = formData.get("email");
+      const name = formData.get("name");
+      const message = formData.get("message");
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
+      if (!email && !name && !message) {
+        alert("Please enter something :)");
+        return;
+      }
+
+      if (!email || !name || !message) {
+        alert("Please don't leave any field empty :(");
+        return;
+      }
+
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email so I can contact you back :D");
+        return;
+      }
+
+      setStatus(1);
+
       emailjs
         .sendForm('service_q6v9kvs', 'template_1xe3mrb', form.current, '1Tt4OCNr7LlQot-_J')
         .then(
           (result) => {
+            setStatus(2);
             console.log(result.text);
             console.log('Message sent successfully!');
           },
           (error) => {
+            setStatus(3);
             console.log(error.text);
             console.log('There was an error sending the message.');
           }
         );
   
-      e.target.reset(); // Reset form after submission
+      e.target.reset();
+    };
+
+    const handleMessageChange = (e) => {
+      setMessage(e.target.value);
     };
 
 
@@ -101,20 +132,28 @@ function Contact({currentPanel}) {
           { openInputs && (
             <>
               <input type='text' name='name' className='name-input' placeholder='Name'></input>
-              <input type='email' name='email' className='email-input' placeholder='Email'></input>
-              <textarea name='message' className='content-input' placeholder='Message'></textarea>
+              <input type='text' name='email' className='email-input' placeholder='Email'></input>
+              <textarea name='message' className='content-input' placeholder='Message' value={message} onChange={handleMessageChange}></textarea>
               <div className='submit-button-container'>
-                <button className='submit-button'>Submit</button>
-                <div className='back-btn' onClick={() => setOpenInputs(false)}>
-                  <svg fill="#4AF626" version="1.1" id="Capa_1" viewBox="0 0 489.394 489.394" stroke="#4AF626">
-                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <g> 
-                        <path d="M375.789,92.867H166.864l17.507-42.795c3.724-9.132,1-19.574-6.691-25.744c-7.701-6.166-18.538-6.508-26.639-0.879 L9.574,121.71c-6.197,4.304-9.795,11.457-9.563,18.995c0.231,7.533,4.261,14.446,10.71,18.359l147.925,89.823 c8.417,5.108,19.18,4.093,26.481-2.499c7.312-6.591,9.427-17.312,5.219-26.202l-19.443-41.132h204.886 c15.119,0,27.418,12.536,27.418,27.654v149.852c0,15.118-12.299,27.19-27.418,27.19h-226.74c-20.226,0-36.623,16.396-36.623,36.622 v12.942c0,20.228,16.397,36.624,36.623,36.624h226.74c62.642,0,113.604-50.732,113.604-113.379V206.709 C489.395,144.062,438.431,92.867,375.789,92.867z"></path> 
-                      </g> 
-                    </g>
-                  </svg>
+                {status === 0 && <button className='submit-button'>Submit</button>}
+                {status === 1 && <div className='loader'></div>}
+                {status === 2 && <div className='information sent'>Email Sent!</div>}
+                {status === 3 && <div className='information sent'>Error...</div>}
+                <div className='back-btn-container'>
+                  <div className='back-btn' onClick={() => {
+                    setOpenInputs(false);
+                    setStatus(0);
+                    }}>
+                    <svg fill="#4AF626" version="1.1" id="Capa_1" viewBox="0 0 489.394 489.394" stroke="#4AF626">
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier"> 
+                        <g> 
+                          <path d="M375.789,92.867H166.864l17.507-42.795c3.724-9.132,1-19.574-6.691-25.744c-7.701-6.166-18.538-6.508-26.639-0.879 L9.574,121.71c-6.197,4.304-9.795,11.457-9.563,18.995c0.231,7.533,4.261,14.446,10.71,18.359l147.925,89.823 c8.417,5.108,19.18,4.093,26.481-2.499c7.312-6.591,9.427-17.312,5.219-26.202l-19.443-41.132h204.886 c15.119,0,27.418,12.536,27.418,27.654v149.852c0,15.118-12.299,27.19-27.418,27.19h-226.74c-20.226,0-36.623,16.396-36.623,36.622 v12.942c0,20.228,16.397,36.624,36.623,36.624h226.74c62.642,0,113.604-50.732,113.604-113.379V206.709 C489.395,144.062,438.431,92.867,375.789,92.867z"></path> 
+                        </g> 
+                      </g>
+                    </svg>
+                  </div>
                 </div>
               </div>
             </>

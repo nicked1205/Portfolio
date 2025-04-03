@@ -11,7 +11,7 @@
  }
 
   .panel.active .glitch:before, .panel.active .personal-image-underlay, .panel.active .terminal.underlay, .panel.active .terminal-control.underlay,
-  .panel.active .terminal-tab.underlay, .panel.active .terminal-tab-container.underlay, .panel.active .personal-image.underlay, .panel.active .project-display.underlay, .panel.active .project-display-top.underlay, .panel.active .project-info.underlay, .panel.active .project-card.underlay, .panel.active .github-btn.underlay, .panel.active .web-btn.underlay {
+  .panel.active .terminal-tab.underlay, .panel.active .terminal-tab-container.underlay, .panel.active .personal-image.underlay, .panel.active .project-display.underlay, .panel.active .project-display-top.underlay, .panel.active .project-info.underlay {
     animation: glitch-text 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2;
   }
 
@@ -20,7 +20,7 @@
     opacity: 0.8;
   }
 
-  .terminal.underlay, .project-display.underlay, .decorative-bar.underlay, .project-card.underlay, .github-btn.underlay, .web-btn.underlay {
+  .terminal.underlay, .project-display.underlay, .decorative-bar.underlay {
     border: var(--glitch-pink) 1px solid !important;
   }
 

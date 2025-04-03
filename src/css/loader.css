@@ -1,0 +1,23 @@
+.loader {
+    opacity: 0.7;
+    position: absolute;
+    width: 35px;
+    aspect-ratio: .75;
+    --c: no-repeat linear-gradient(var(--glitch-green) 0 0);
+    background: 
+      var(--c) 0%   50%,
+      var(--c) 50%  50%,
+      var(--c) 100% 50%;
+    animation: load 1s infinite linear alternate;
+    left: 50%;
+    translate: -50%;
+  }
+
+  @keyframes load {
+    0%  {background-size: 20% 50% ,20% 50% ,20% 50% }
+    20% {background-size: 20% 20% ,20% 50% ,20% 50% }
+    40% {background-size: 20% 100%,20% 20% ,20% 50% }
+    60% {background-size: 20% 50% ,20% 100%,20% 20% }
+    80% {background-size: 20% 50% ,20% 50% ,20% 100%}
+    100%{background-size: 20% 50% ,20% 50% ,20% 50% }
+  }

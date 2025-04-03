@@ -17,6 +17,8 @@
     overflow: hidden;
     width: 0%;
     height: 0%;
+    background-color: rgb(74 246 38/ 0.05);
+    clip-path: polygon(11% 0%, 89% 0%, 100% 6%, 100% 94%, 89% 100%, 9% 100%, 0% 94%, 0% 6%);
 }
 
 .experience-display.open {
@@ -36,6 +38,10 @@
 
 .experience-container .information {
     animation-delay: 2.0s !important;
+}
+
+.experience-display .information-container {
+    padding-top: 5%;
 }
 
 @media only screen and (max-width: 480px) {

@@ -40,14 +40,21 @@
     height: 100%;
     padding: 5px 10px;
     transition: 0.2s linear;
+    &:hover {
+        background-color: var(--glitch-green-bg);
+        cursor: pointer;
+    }
     .panel.active & {
         pointer-events: auto !important;
     }
 }
 
-.github-btn:hover, .web-btn:hover {
-    background-color: var(--glitch-green-bg);
-    cursor: pointer;
+.github-btn.unallow, .web-btn.unallow {
+    opacity: 0.3;
+    &:hover {
+        cursor: default;
+        background-color: transparent;
+    }
 }
 
 .icon-container {

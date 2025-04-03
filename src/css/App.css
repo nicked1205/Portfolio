@@ -9,6 +9,7 @@
 @import 'project-display.css';
 @import 'project-card.css';
 @import 'contact.css';
+@import 'loader.css';
 
 :root {
   --glitch-green: #4AF626;
