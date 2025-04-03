@@ -41,7 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://nicked1205.github.io/Portfolio/",
   "devDependencies": {
     "gh-pages": "^6.3.0"
   }
