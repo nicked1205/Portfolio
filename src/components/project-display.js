@@ -4,11 +4,26 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import UnrefusableValentine from '../resources/UnrefusableValentine.png';
+import Portfolio from '../resources/Portfolio.png';
+import AIA from '../resources/AIA.png';
+import BioNix from '../resources/BioNix.png';
+import Kamo from '../resources/kamo.png';
+import formatContent from '../functions/util';
 
 function ProjectDisplay() {
     const [slide, setSlide] = useState(0);
-    const projects = ['Algorithms in Action', 'BioNix', 'Unrefusable Valentine', 'Portfolio', 'Kamo', 'Applications Tracker']
+    const projects = [['Algorithms in Action', 'A website that visualizes different computer algorithms for students to understand them better and educators to better deliver their lessons', 'Tech: Javascript, CSS, HTML'], ['BioNix', 'Wrapping bioinformatics software into a package manager called BioNix', 'Tech: Nix, Markdown'], ['Unrefusable Valentine', 'An ultimate web app designed to ask someone to be your Valentine in a way that is impossible to say no', 'Tech: ReactJS, TailwindCSS, HTML'], ['Portfolio', 'My digital portofio to showcase my experiences, projects, contacts and most importantly, my UI design and development capabilities', 'Tech: ReactJS, HTML, CSS'], ['Kamo', 'An AI Chatbot that assists students with subjects information of multiple universities, and course optimization', 'Tech: VueJS, CSS, HTML, .Net Core, MySQL']] 
+    const githubUrls = ['https://github.com/tuankhainguy/algorithms-in-action.github.io', 'https://github.com/WEHI-ResearchComputing/BioNix-GettingStarted/wiki', 'https://github.com/nicked1205/Unrefusable-Valentine', 'https://github.com/nicked1205/Portfolio', '']
+    const webUrls = ['https://dev-aia.vercel.app/', '', 'https://valentine-delta-livid.vercel.app/', 'https://portfolio-mu-ecru-53.vercel.app/', '']
+    const imageUrls = [AIA, BioNix, UnrefusableValentine, Portfolio, Kamo]
+    const [formattedContent, setFormattedContent] = useState()
+
+    useEffect(() => {
+        setFormattedContent(formatContent(projects[slide], null))
+        // eslint-disable-next-line
+    }, [slide])
 
     return (
         <>
@@ -22,7 +37,13 @@ function ProjectDisplay() {
                     </div>
                 </div>
                 <div className='project-display-bottom'>
-                    <div className='project-info'></div>
+                    <div className='project-info'>
+                        {projects.map((str, index) => {
+                            return (
+                                (slide === index && formattedContent)
+                            )
+                        })}
+                    </div>
                     <div className='project-slider'>
                         <Swiper
                             modules={[Navigation, Autoplay]}
@@ -36,7 +57,7 @@ function ProjectDisplay() {
                             {projects.map((projects, index) => {
                                 return (
                                 <SwiperSlide key={index}>
-                                    <ProjectCard githubUrl='.'/>
+                                    <ProjectCard githubUrl={githubUrls[index]} webUrl={webUrls[index]} imageUrl={imageUrls[index]}/>
                                 </SwiperSlide>
                             )})}
                         </Swiper>
