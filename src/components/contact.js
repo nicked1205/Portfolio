@@ -8,6 +8,7 @@ function Contact({currentPanel}) {
     const [cid, setCid] = useState();
     const [status, setStatus] = useState(0);
     const [message, setMessage] = useState('');
+    const [noti, setNoti] = useState('');
 
     const handleClickLinkedIn = () => {
       if (openMenu) {
@@ -51,17 +52,17 @@ function Contact({currentPanel}) {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
       if (!email && !name && !message) {
-        alert("Please enter something :)");
+        setNoti("Please enter something :)");
         return;
       }
 
       if (!email || !name || !message) {
-        alert("Please don't leave any field empty :(");
+        setNoti("Please don't leave any field empty :(");
         return;
       }
 
       if (!emailPattern.test(email)) {
-        alert("Please enter a valid email so I can contact you back :D");
+        setNoti("Please enter a valid email so I can contact you back :D");
         return;
       }
 
@@ -72,8 +73,10 @@ function Contact({currentPanel}) {
         .then(
           (result) => {
             setStatus(2);
+            setMessage('');
             console.log(result.text);
             console.log('Message sent successfully!');
+            e.target.reset();
           },
           (error) => {
             setStatus(3);
@@ -81,8 +84,6 @@ function Contact({currentPanel}) {
             console.log('There was an error sending the message.');
           }
         );
-  
-      e.target.reset();
     };
 
     const handleMessageChange = (e) => {
@@ -131,9 +132,9 @@ function Contact({currentPanel}) {
         <form ref={form} onSubmit={sendEmail} className={`contact-form ${openInputs ? 'open' : 'close'}`}>
           { openInputs && (
             <>
-              <input type='text' name='name' className='name-input' placeholder='Name'></input>
-              <input type='text' name='email' className='email-input' placeholder='Email'></input>
-              <textarea name='message' className='content-input' placeholder='Message' value={message} onChange={handleMessageChange}></textarea>
+              <input type='text' name='name' className='name-input' placeholder='Name' onFocus={() => setNoti('')}></input>
+              <input type='text' name='email' className='email-input' placeholder='Email' onFocus={() => setNoti('')}></input>
+              <textarea name='message' className='content-input' placeholder='Message' value={message} onChange={handleMessageChange} onFocus={() => setNoti('')}></textarea>
               <div className='submit-button-container'>
                 {status === 0 && <button className='submit-button'>Submit</button>}
                 {status === 1 && <div className='loader'></div>}
@@ -160,6 +161,7 @@ function Contact({currentPanel}) {
           )}
         </form>
       </div>
+      {noti !== '' && (<div className='notification information'>{noti}</div>)}
     </>
   );
 }

@@ -192,9 +192,9 @@
     position: absolute;
     left: 50%;
     translate: -50%;
-    padding: 1%;
+    padding: 1% 2%;
     border-radius: 0.5rem;
-    width: 15%;
+    width: fit-content;
     overflow: hidden;
     text-align: center;
     background-color: var(--glitch-green-bg);
@@ -254,4 +254,36 @@
 
 .submit-button-container .information {
     animation-delay: 0.1s !important;
+}
+
+.notification {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 75%;
+    color: var(--glitch-green);
+    width: 100%;
+    height: fit-content;
+    padding-top: 2%;
+    animation: blinkIn 0.5s linear forwards !important;
+    opacity: 0;
+}
+
+@media only screen {
+    @media (orientation: portrait) {
+        .contact-form-container {
+            height: 30%;
+            width: 80%;
+        }
+        .contact-form {
+            border-radius: 1.5rem;
+        }
+        .name-input, .email-input, .content-input, .submit-button {
+            font-size: 8px;
+            &::placeholder {
+                font-size: 8px;
+            }
+        }
+    }
 }
