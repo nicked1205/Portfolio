@@ -279,10 +279,44 @@
         .contact-form {
             border-radius: 1.5rem;
         }
+        .notification {
+            top: 65%;
+        }
+    }
+    @media (max-width: 320px) {
+        .name-input, .email-input, .content-input, .submit-button {
+            font-size: 7px;
+        }
+    }
+    @media (min-width: 321px) and (max-width: 412px) {
         .name-input, .email-input, .content-input, .submit-button {
             font-size: 8px;
-            &::placeholder {
-                font-size: 8px;
+        }
+    }
+    @media (min-width: 413px) and (max-width: 480px) {
+        .name-input, .email-input, .content-input, .submit-button {
+            font-size: 9px;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+        .name-input, .email-input, .content-input, .submit-button {
+            font-size: 12px;
+        }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .name-input, .email-input, .content-input, .submit-button {
+            font-size: 14px;
+        }
+        @media (orientation: landscape) {
+            .name-input, .email-input, .content-input, .submit-button {
+                font-size: 10px;
+            }
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1440px) {
+        @media (orientation: landscape) {
+            .name-input, .email-input, .content-input, .submit-button {
+                font-size: 12px;
             }
         }
     }

@@ -166,7 +166,7 @@
     }
     
     .tracker {
-      padding: 20px;
+      padding: 10px;
     }
 
     .tracker button:hover::before {
