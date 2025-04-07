@@ -35,6 +35,7 @@ function Contact({currentPanel}) {
         setOpenInputs(false);
         setStatus(0);
         clearTimeout(cid);
+        setNoti('');
       }
       // eslint-disable-next-line
     }, [currentPanel])
