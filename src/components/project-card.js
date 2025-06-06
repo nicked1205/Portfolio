@@ -2,11 +2,11 @@ import '../css/App.css';
 
 function ProjectCard({ githubUrl, webUrl, imageUrl }) {
     const handleClickGithub = () => {
-        window.open(githubUrl, '_blank');
+        if (githubUrl !== '') window.open(githubUrl);
     }
 
     const handleClickWeb = () => {
-        window.open(webUrl, '_blank');
+        if (webUrl !== '') window.open(webUrl);
     }
 
     return (
