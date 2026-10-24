@@ -13,7 +13,7 @@ function Contact({currentPanel}) {
     const handleClickLinkedIn = () => {
       if (openMenu) {
         setOpenMenu(false)
-        window.open('https://www.linkedin.com/in/nick-nguyen-b013b0287/')
+        window.open('https://www.linkedin.com/in/nicknguyen2150/')
       }
     }
 
