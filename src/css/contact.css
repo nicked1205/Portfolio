@@ -166,22 +166,14 @@
     border-bottom: 1px dashed rgb(74 246 38/ 0.4);
 }
 
-.back-btn {
-    position: relative;
-    display: flex;
-    padding: 4px;
-    opacity: 0.7;
-    transition: opacity 0.2s ease-out;
+.form-text-btn {
+    padding: 4px 0;
+    white-space: nowrap;
+    text-underline-offset: 4px;
     &:hover {
-        opacity: 1;
+        text-decoration: underline;
         cursor: pointer;
     }
-}
-
-.form-icon {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
 }
 
 .form-to {
@@ -193,18 +185,6 @@
 
 .form-address {
     overflow-wrap: anywhere;
-}
-
-.copy-btn {
-    position: relative;
-    display: flex;
-    padding: 4px;
-    opacity: 0.7;
-    transition: opacity 0.2s ease-out;
-    &:hover {
-        opacity: 1;
-        cursor: pointer;
-    }
 }
 
 .form-row {
@@ -316,7 +296,7 @@
     pointer-events: auto !important;
 }
 
-.contact-form.open .back-btn, .contact-form.open .copy-btn, .contact-form.open .submit-button, .contact-form.open .form-row, .contact-form.open .form-input {
+.contact-form.open .form-text-btn, .contact-form.open .submit-button, .contact-form.open .form-row, .contact-form.open .form-input {
     pointer-events: auto !important;
 }
 

@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import '../css/App.css';
 import emailjs from '@emailjs/browser';
-import PixelIcon from './pixel-icon';
 
 // What the prompt line under the menu says while each channel is hovered
 const channelHints = {
@@ -13,9 +12,6 @@ const channelHints = {
 
 const emailAddress = 'nick.nguyen2150@gmail.com';
 
-const backIcon = ['...#...', '..##...', '.######', '#######', '.######', '..##...', '...#...'];
-const copyIcon = ['####...', '#..#...', '#..####', '####..#', '...#..#', '...#..#', '...####'];
-const copiedIcon = ['.......', '......#', '.....##', '#...##.', '##.##..', '.###...', '..#....'];
 
 const resumes = [
     { label: 'AI/ML', file: 'Nick-Nguyen-Resume-AIML.pdf' },
@@ -215,16 +211,16 @@ function Contact({currentPanel}) {
             <>
               <div className='form-header'>
                 <span>&gt; compose_message</span>
-                <div className='back-btn bracket-hover' title='Back (Esc)' aria-label='Back' onClick={() => {
+                <div className='form-text-btn' title='Back (Esc)' onClick={() => {
                   setOpenInputs(false);
                   setStatus(0);
                   setErrors({});
-                  }}><PixelIcon rows={backIcon} className='form-icon' /></div>
+                  }}>back</div>
               </div>
               <div className='form-to'>
                 <span className='form-prompt'>to &gt;</span>
                 <span className='form-address'>{emailAddress}</span>
-                <div className='copy-btn bracket-hover' title={copied ? 'Copied' : 'Copy email address'} aria-label='Copy email address' onClick={copyEmail}><PixelIcon rows={copied ? copiedIcon : copyIcon} className='form-icon' /></div>
+                <div className='form-text-btn' onClick={copyEmail}>{copied ? 'copied' : 'copy'}</div>
               </div>
               <label className='form-row'>
                 <span className='form-prompt'>name &gt;</span>
