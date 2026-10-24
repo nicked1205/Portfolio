@@ -69,6 +69,7 @@
     border: var(--border);
     aspect-ratio: 1/1;
     height: 10vw;
+    border-radius: 50%;
     opacity: 0;
     transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     padding: 13%;
