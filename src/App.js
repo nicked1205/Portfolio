@@ -10,6 +10,7 @@ import pinkPersonalPhoto from './resources/pink-personal-photo.png';
 import { scramble } from './functions/scrambler.js';
 import ProjectDisplay from './components/project-display.js';
 import Contact from './components/contact.js';
+import TrackerIcon from './components/tracker-icon.js';
 
 function App() {
   let panels = ["Introduction", "Roles", "Experience", "Projects", "Contact"];
@@ -165,7 +166,7 @@ function App() {
               aria-label={panel}
             >
               <span className="tracker-label">{panel}</span>
-              <span className="tracker-index">{String(index + 1).padStart(2, '0')}</span>
+              <TrackerIcon name={panel} />
               <span className="tracker-marker">
                 {currentPanel === index && (
                   <motion.span layoutId="tracker-brackets" className="tracker-brackets" transition={{ duration: 0.35, ease: 'easeOut' }} />

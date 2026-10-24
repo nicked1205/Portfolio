@@ -49,7 +49,11 @@
   pointer-events: auto !important;
 }
 
+/* Floats beside the icon on hover, outside the layout so it never blocks clicks underneath */
 .tracker-label {
+  position: absolute;
+  right: calc(100% + 8px);
+  pointer-events: none;
   text-transform: uppercase;
   white-space: nowrap;
   opacity: 0;
@@ -57,8 +61,11 @@
   transition: opacity 0.2s, translate 0.2s;
 }
 
-.tracker-index {
-  opacity: 0.5;
+.tracker-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  opacity: 0.45;
   transition: opacity 0.2s;
 }
 
@@ -77,12 +84,7 @@
   translate: 0 0;
 }
 
-.tracker-item.active .tracker-label {
-  opacity: 1;
-  translate: 0 0;
-}
-
-.tracker-item:hover .tracker-index, .tracker-item.active .tracker-index {
+.tracker-item:hover .tracker-icon, .tracker-item.active .tracker-icon {
   opacity: 1;
 }
 
@@ -117,13 +119,6 @@
   background-repeat: no-repeat;
 }
 
-/* Narrower desktops: drop the numbers so the active label clears the content */
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .tracker-index {
-    display: none;
-  }
-}
-
 /* Phones: markers and rail only, so the bar doesn't cover content */
 @media only screen and (max-width: 767px) {
   .tracker-container {
@@ -134,7 +129,7 @@
     gap: 18px;
   }
 
-  .tracker-label, .tracker-index {
+  .tracker-label, .tracker-icon {
     display: none;
   }
 }
