@@ -48,6 +48,23 @@ function Contact({currentPanel}) {
       // eslint-disable-next-line
     }, [currentPanel])
 
+    // Escape backs out of the form, or closes the open menu
+    useEffect(() => {
+      if (currentPanel !== 4) return;
+      const handleKey = (e) => {
+        if (e.key !== 'Escape') return;
+        if (openInputs) {
+          setOpenInputs(false);
+          setStatus(0);
+          setErrors({});
+        } else {
+          setOpenMenu(false);
+        }
+      };
+      window.addEventListener('keydown', handleKey);
+      return () => window.removeEventListener('keydown', handleKey);
+    }, [currentPanel, openInputs])
+
     // The buttons can slide out from under the cursor without a mouseleave, so clear the hint on close
     useEffect(() => {
       if (!openMenu) setHovered(null);
@@ -150,7 +167,7 @@ function Contact({currentPanel}) {
             <>
               <div className='form-header'>
                 <span>&gt; compose_message</span>
-                <div className='back-btn bracket-hover' onClick={() => {
+                <div className='back-btn bracket-hover' title='Back (Esc)' onClick={() => {
                   setOpenInputs(false);
                   setStatus(0);
                   setErrors({});

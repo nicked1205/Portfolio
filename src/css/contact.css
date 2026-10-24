@@ -257,23 +257,23 @@
 }
 
 .contact-form.open .form-header {
-    animation: blinkIn 0.5s linear 1.3s forwards;
+    animation: blinkIn 0.35s linear 0.75s forwards;
 }
 
 .contact-form.open .form-row:nth-of-type(1) {
-    animation: blinkIn 0.5s linear 1.7s forwards;
+    animation: blinkIn 0.35s linear 0.85s forwards;
 }
 
 .contact-form.open .form-row:nth-of-type(2) {
-    animation: blinkIn 0.5s linear 2.1s forwards;
+    animation: blinkIn 0.35s linear 0.95s forwards;
 }
 
 .contact-form.open .form-row:nth-of-type(3) {
-    animation: blinkIn 0.5s linear 2.5s forwards;
+    animation: blinkIn 0.35s linear 1.05s forwards;
 }
 
 .contact-form.open .submit-button-container {
-    animation: blinkIn 0.5s linear 2.9s forwards;
+    animation: blinkIn 0.35s linear 1.15s forwards;
 }
 
 .panel.active .contact-menu {
