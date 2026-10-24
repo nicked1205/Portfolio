@@ -193,7 +193,6 @@ function Contact({currentPanel}) {
           </div>
           <div className='contact-menu-center'></div>
           <div className='contact-menu-center'></div>
-          <span className='contact-menu-label'>{openMenu ? '[ CLOSE ]' : '[ CONNECT ]'}</span>
       </div>
       <div className='contact-form-container'>
         <form ref={form} onSubmit={sendEmail} className={`contact-form ${openInputs ? 'open' : 'close'}`}>

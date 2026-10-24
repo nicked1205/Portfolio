@@ -16,7 +16,8 @@
     /* Sized by the shorter of width and height so all four channels fit on short screens */
     width: min(10vw, 15vh);
     height: min(10vw, 15vh);
-    background-color: rgb(74 246 38/ 0.12);
+    border-radius: 50%;
+    background-color: rgb(74 246 38/ 0.2);
     border: var(--border);
     transition: 0.3s ease-in-out;
     justify-content: center;
@@ -36,8 +37,10 @@
 .contact-menu-center {
     position: absolute;
     border: var(--border);
+    background-color: var(--glitch-green);
     width: 0%;
     aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 .contact-menu-center {
@@ -106,15 +109,8 @@
     animation: openMenu 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
 }
 
-.contact-menu.close .contact-menu-center, .contact-menu.close .contact-menu-label {
+.contact-menu.close .contact-menu-center {
     opacity: 0;
-}
-
-.contact-menu-label {
-    color: var(--glitch-green);
-    font-size: clamp(7px, 0.7vw, 11px);
-    white-space: nowrap;
-    z-index: 1;
 }
 
 .contact-form-container {
