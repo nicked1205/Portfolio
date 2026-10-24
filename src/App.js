@@ -165,7 +165,6 @@ function App() {
               className={`tracker-item ${currentPanel === index ? 'active' : index < currentPanel ? 'passed' : ''}`}
               aria-label={panel}
             >
-              <span className="tracker-label">{panel}</span>
               <TrackerIcon name={panel} />
               <span className="tracker-marker">
                 {currentPanel === index && (

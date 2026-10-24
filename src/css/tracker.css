@@ -49,18 +49,6 @@
   pointer-events: auto !important;
 }
 
-/* Floats beside the icon on hover, outside the layout so it never blocks clicks underneath */
-.tracker-label {
-  position: absolute;
-  right: calc(100% + 8px);
-  pointer-events: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: 0;
-  translate: 6px 0;
-  transition: opacity 0.2s, translate 0.2s;
-}
-
 .tracker-icon {
   width: 14px;
   height: 14px;
@@ -77,11 +65,6 @@
   background-color: #111;
   opacity: 0.6;
   transition: background-color 0.2s, opacity 0.2s;
-}
-
-.tracker-item:hover .tracker-label {
-  opacity: 1;
-  translate: 0 0;
 }
 
 .tracker-item:hover .tracker-icon, .tracker-item.active .tracker-icon {
@@ -129,7 +112,7 @@
     gap: 18px;
   }
 
-  .tracker-label, .tracker-icon {
+  .tracker-icon {
     display: none;
   }
 }
