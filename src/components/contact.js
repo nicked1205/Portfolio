@@ -110,7 +110,7 @@ function Contact({currentPanel}) {
       <div className={`contact-menu ${openMenu ? 'on' : 'off'} ${openInputs ? 'close' : 'open'}`} onClick={() => {
           if (!openInputs) setOpenMenu(!openMenu)
         }}>
-          <div className={`linkedin-button ${openInputs ? 'hidden': ''}`} onClick={handleClickLinkedIn} onMouseEnter={() => setHovered('linkedin')} onMouseLeave={() => setHovered(null)}>
+          <div className={`linkedin-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickLinkedIn} onMouseEnter={() => setHovered('linkedin')} onMouseLeave={() => setHovered(null)}>
             <svg fill="#4AF626" fillOpacity={0.7} height="75%" width="75%" version="1.1" id="Layer_1" viewBox="0 0 310.00 310.00" transform="matrix(1, 0, 0, 1, 0, 0)" stroke="#4AF626"strokeWidth="0.0031">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="1.8599999999999999"></g>
               <g id="SVGRepo_iconCarrier"> 
@@ -121,7 +121,7 @@ function Contact({currentPanel}) {
               </g>
             </svg>
           </div>
-          <div className={`email-button ${openInputs ? 'hidden': ''}`} onClick={handleClickEmail} onMouseEnter={() => setHovered('email')} onMouseLeave={() => setHovered(null)}>
+          <div className={`email-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickEmail} onMouseEnter={() => setHovered('email')} onMouseLeave={() => setHovered(null)}>
             <svg viewBox="0 0 24 24" opacity={0.7} fill="none">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -130,7 +130,7 @@ function Contact({currentPanel}) {
               </g>
             </svg>
           </div>
-          <div className={`github-button ${openInputs ? 'hidden': ''}`} onClick={handleClickGithub} onMouseEnter={() => setHovered('github')} onMouseLeave={() => setHovered(null)}>
+          <div className={`github-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickGithub} onMouseEnter={() => setHovered('github')} onMouseLeave={() => setHovered(null)}>
             <svg className='icon' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0,0,256,256">
                 <g fill="#4af626" fillOpacity={0.7} fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
                     <g transform="scale(8.53333,8.53333)">
@@ -141,6 +141,7 @@ function Contact({currentPanel}) {
           </div>
           <div className='contact-menu-center'></div>
           <div className='contact-menu-center'></div>
+          <span className='contact-menu-label'>{openMenu ? '[ CLOSE ]' : '[ CONNECT ]'}</span>
       </div>
       <div className='contact-form-container'>
         <form ref={form} onSubmit={sendEmail} className={`contact-form ${openInputs ? 'open' : 'close'}`}>

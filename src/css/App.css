@@ -93,3 +93,30 @@ html, body {
     position: absolute;
     inset: 0;
 }
+
+/* Corner brackets that snap in around an element on hover */
+.bracket-hover::after {
+    --corner: linear-gradient(var(--glitch-green) 0 0);
+    --length: 10px;
+    --thickness: 2px;
+    content: '';
+    position: absolute;
+    inset: -12px;
+    background:
+        var(--corner) top left / var(--length) var(--thickness),
+        var(--corner) top left / var(--thickness) var(--length),
+        var(--corner) top right / var(--length) var(--thickness),
+        var(--corner) top right / var(--thickness) var(--length),
+        var(--corner) bottom left / var(--length) var(--thickness),
+        var(--corner) bottom left / var(--thickness) var(--length),
+        var(--corner) bottom right / var(--length) var(--thickness),
+        var(--corner) bottom right / var(--thickness) var(--length);
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: inset 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.bracket-hover:not(.unallow):hover::after {
+    inset: -6px;
+    opacity: 1;
+}

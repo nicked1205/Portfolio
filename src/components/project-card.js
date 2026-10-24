@@ -14,7 +14,7 @@ function ProjectCard({ githubUrl, webUrl, imageUrl }) {
             <div className='project-card'>
                 <img className='project-img' src={imageUrl} alt='project-img'></img>
                 <div className='btn-container'>
-                    <div className={`github-btn glitch ${githubUrl !== '' ? 'allow' : 'unallow'}`} onClick={handleClickGithub}>
+                    <div className={`github-btn glitch bracket-hover ${githubUrl !== '' ? 'allow' : 'unallow'}`} onClick={handleClickGithub}>
                         <div className='icon-container'>
                             <svg className='icon' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0,0,256,256">
                                 <g fill="#4af626" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
@@ -26,7 +26,7 @@ function ProjectCard({ githubUrl, webUrl, imageUrl }) {
                         </div>
                         GitHub
                     </div>
-                    <div className={`web-btn glitch ${webUrl !== '' ? 'allow' : 'unallow'}`} onClick={handleClickWeb}>
+                    <div className={`web-btn glitch bracket-hover ${webUrl !== '' ? 'allow' : 'unallow'}`} onClick={handleClickWeb}>
                         <div className='icon-container'>
                             <svg className='icon' fill="#4AF626" height="80%" width="80%" version="1.1" id="Capa_1" viewBox="0 0 490 490">
                                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
