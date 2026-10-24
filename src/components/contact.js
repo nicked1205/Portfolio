@@ -255,7 +255,7 @@ function Contact({currentPanel}) {
             <>
               &gt; download resume:
               {resumes.map((resume) => (
-                <a key={resume.file} className='resume-link bracket-hover' href={`${process.env.PUBLIC_URL}/resume/${resume.file}`} target='_blank' rel='noreferrer'>[ {resume.label} ]</a>
+                <a key={resume.file} className='resume-link' href={`${process.env.PUBLIC_URL}/resume/${resume.file}`} target='_blank' rel='noreferrer'>{resume.label}</a>
               ))}
             </>
           ) : (

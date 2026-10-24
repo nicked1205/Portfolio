@@ -353,14 +353,13 @@
 .resume-link {
     position: relative;
     margin-left: 1.5em;
-    padding: 4px 6px;
     color: var(--glitch-green);
     text-decoration: none;
-    transition: background-color 0.2s ease-out;
+    text-underline-offset: 4px;
     .panel.active & {
         pointer-events: auto !important;
     }
     &:hover {
-        background-color: var(--glitch-green-bg);
+        text-decoration: underline;
     }
 }
