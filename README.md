@@ -21,13 +21,9 @@ The `build` script sets `GENERATE_SOURCEMAP` with Windows `set` syntax, so on ma
 
 ## Updating content
 
-- Experience: the `experiences` array in `src/components/timeline.js`. Marker positions on the timeline are set in `src/css/timeline.css`.
+- Experience: the `experiences` array in `src/components/timeline.js`. Each marker is placed on the timeline from its `start` date.
 - Projects: the `projects`, `githubUrls`, `webUrls`, and `imageUrls` arrays in `src/components/project-display.js`. Entries match up by index, and an empty string greys out that button.
 - Images: `src/resources/`
-
-## Deployment
-
-`npm run deploy` builds the site and publishes it to GitHub Pages with `gh-pages`.
 
 ## License
 
