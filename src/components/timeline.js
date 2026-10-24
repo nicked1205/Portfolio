@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import '../css/App.css';
-import useDecode from '../functions/useDecode';
+import DecodeText from './decode-text';
 import { line } from '../functions/variants';
 
 const experiences = [
@@ -105,8 +105,6 @@ const closeDown = {
 };
 
 function ExperienceCard({ experience }) {
-    const company = useDecode(experience.company, { delay: 0.75 });
-
     return (
         <motion.div
             className='experience-display'
@@ -120,7 +118,7 @@ function ExperienceCard({ experience }) {
                 animate='show'
                 variants={{ show: { transition: { delayChildren: 0.75, staggerChildren: 0.1 } } }}
             >
-                <motion.div variants={line} className='experience-company'>{company}</motion.div>
+                <motion.div variants={line} className='experience-company'><DecodeText text={experience.company} delay={0.75} /></motion.div>
                 {experience.role && <motion.div variants={line} className='experience-role'>{experience.role}</motion.div>}
                 <motion.div variants={line} className='experience-date'>[ {experience.start} &rarr; {experience.end} ]</motion.div>
                 <ul className='experience-points'>

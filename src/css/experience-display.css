@@ -31,14 +31,14 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 12% 10%;
+    /* Fixed units, not %: percentage padding follows the card's width, which is 0 when the open animation measures the height */
+    padding: min(72px, 5.3vw) min(60px, 4.4vw);
     color: var(--glitch-green);
     text-align: left;
 }
 
 .experience-company {
     font-size: clamp(11px, 1.05vw, 15px);
-    min-height: 1.6em;
 }
 
 .experience-role {
@@ -81,6 +81,7 @@
     }
     .experience-content {
         width: 80vw;
+        padding: 9.6vw 8vw;
         gap: 8px;
     }
     .experience-points {

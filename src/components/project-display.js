@@ -17,14 +17,13 @@ import AgentSkillsRegistry from "../resources/agent-skills-registry.jpeg";
 import BasketballDeflection from "../resources/basketball-deflection.svg";
 import CybersecurityRAG from "../resources/cybersecurity-rag.svg";
 import RLHF from "../resources/rlhf.svg";
-import useDecode from "../functions/useDecode";
+import DecodeText from "./decode-text";
 import { line } from "../functions/variants";
 
 const slugOf = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 function ProjectInfo({ project }) {
   const [title, ...details] = project;
-  const decodedTitle = useDecode(title, { speed: 2 });
 
   return (
     <motion.div
@@ -35,7 +34,7 @@ function ProjectInfo({ project }) {
       variants={{ show: { transition: { delayChildren: 0.1, staggerChildren: 0.12 } } }}
     >
       <motion.div variants={line} className="project-title">
-        {decodedTitle}
+        <DecodeText text={title} speed={2} />
       </motion.div>
       {details.map((text) =>
         text.startsWith("Tech: ") ? (

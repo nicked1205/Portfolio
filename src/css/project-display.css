@@ -110,7 +110,6 @@
 
 .project-title {
     font-size: clamp(10px, 1vw, 15px);
-    min-height: 1.6em;
 }
 
 .project-description {

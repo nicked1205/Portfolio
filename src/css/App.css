@@ -78,3 +78,17 @@ html, body {
 .hidden {
     visibility: hidden;
 }
+
+.decode-text {
+    position: relative;
+    display: block;
+}
+
+.decode-text-ghost {
+    visibility: hidden;
+}
+
+.decode-text-live {
+    position: absolute;
+    inset: 0;
+}
