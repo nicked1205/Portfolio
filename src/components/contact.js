@@ -16,7 +16,7 @@ function Contact({currentPanel}) {
     const [cid, setCid] = useState();
     const [status, setStatus] = useState(0);
     const [message, setMessage] = useState('');
-    const [noti, setNoti] = useState('');
+    const [errors, setErrors] = useState({});
 
     const handleClickLinkedIn = () => {
       if (openMenu) {
@@ -43,7 +43,7 @@ function Contact({currentPanel}) {
         setOpenInputs(false);
         setStatus(0);
         clearTimeout(cid);
-        setNoti('');
+        setErrors({});
       }
       // eslint-disable-next-line
     }, [currentPanel])
@@ -64,21 +64,14 @@ function Contact({currentPanel}) {
       const message = formData.get("message");
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-      if (!email && !name && !message) {
-        setNoti("Please enter something :)");
-        return;
-      }
 
-      if (!email || !name || !message) {
-        setNoti("Please don't leave any field empty :(");
-        return;
-      }
-
-      if (!emailPattern.test(email)) {
-        setNoti("Please enter a valid email so I can contact you back :D");
-        return;
-      }
+      const nextErrors = {};
+      if (!name) nextErrors.name = 'required';
+      if (!email) nextErrors.email = 'required';
+      else if (!emailPattern.test(email)) nextErrors.email = 'invalid address';
+      if (!message) nextErrors.message = 'required';
+      setErrors(nextErrors);
+      if (Object.keys(nextErrors).length > 0) return;
 
       setStatus(1);
 
@@ -102,6 +95,14 @@ function Contact({currentPanel}) {
 
     const handleMessageChange = (e) => {
       setMessage(e.target.value);
+    };
+
+    const clearError = (field) => () => setErrors((prev) => ({ ...prev, [field]: undefined }));
+
+    const statusLines = {
+      1: 'transmitting...',
+      2: 'message delivered',
+      3: 'error: transmission failed, try again',
     };
 
 
@@ -147,30 +148,36 @@ function Contact({currentPanel}) {
         <form ref={form} onSubmit={sendEmail} className={`contact-form ${openInputs ? 'open' : 'close'}`}>
           { openInputs && (
             <>
-              <input type='text' name='name' className='name-input' placeholder='Name' onFocus={() => setNoti('')}></input>
-              <input type='text' name='email' className='email-input' placeholder='Email' onFocus={() => setNoti('')}></input>
-              <textarea name='message' className='content-input' placeholder='Message' value={message} onChange={handleMessageChange} onFocus={() => setNoti('')}></textarea>
+              <div className='form-header'>
+                <span>&gt; compose_message</span>
+                <div className='back-btn bracket-hover' onClick={() => {
+                  setOpenInputs(false);
+                  setStatus(0);
+                  setErrors({});
+                  }}>[ BACK ]</div>
+              </div>
+              <label className='form-row'>
+                <span className='form-prompt'>name &gt;</span>
+                <input type='text' name='name' className='form-input' autoComplete='name' onFocus={clearError('name')}></input>
+                {errors.name && <span className='form-error'>! {errors.name}</span>}
+              </label>
+              <label className='form-row'>
+                <span className='form-prompt'>email &gt;</span>
+                <input type='text' name='email' className='form-input' autoComplete='email' onFocus={clearError('email')}></input>
+                {errors.email && <span className='form-error'>! {errors.email}</span>}
+              </label>
+              <label className='form-row form-row-message'>
+                <span className='form-prompt'>message &gt;</span>
+                {errors.message && <span className='form-error'>! {errors.message}</span>}
+                <textarea name='message' className='form-input form-textarea' value={message} onChange={handleMessageChange} onFocus={clearError('message')}></textarea>
+              </label>
               <div className='submit-button-container'>
-                {status === 0 && <button className='submit-button'>Submit</button>}
-                {status === 1 && <div className='loader'></div>}
-                {status === 2 && <div className='information sent'>Email Sent!</div>}
-                {status === 3 && <div className='information sent'>Error...</div>}
-                <div className='back-btn-container'>
-                  <div className='back-btn' onClick={() => {
-                    setOpenInputs(false);
-                    setStatus(0);
-                    }}>
-                    <svg fill="#4AF626" version="1.1" id="Capa_1" viewBox="0 0 489.394 489.394" stroke="#4AF626">
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                      <g id="SVGRepo_iconCarrier"> 
-                        <g> 
-                          <path d="M375.789,92.867H166.864l17.507-42.795c3.724-9.132,1-19.574-6.691-25.744c-7.701-6.166-18.538-6.508-26.639-0.879 L9.574,121.71c-6.197,4.304-9.795,11.457-9.563,18.995c0.231,7.533,4.261,14.446,10.71,18.359l147.925,89.823 c8.417,5.108,19.18,4.093,26.481-2.499c7.312-6.591,9.427-17.312,5.219-26.202l-19.443-41.132h204.886 c15.119,0,27.418,12.536,27.418,27.654v149.852c0,15.118-12.299,27.19-27.418,27.19h-226.74c-20.226,0-36.623,16.396-36.623,36.622 v12.942c0,20.228,16.397,36.624,36.623,36.624h226.74c62.642,0,113.604-50.732,113.604-113.379V206.709 C489.395,144.062,438.431,92.867,375.789,92.867z"></path> 
-                        </g> 
-                      </g>
-                    </svg>
+                {status !== 1 && status !== 2 && <button className='submit-button bracket-hover'>[ SEND ]</button>}
+                {status !== 0 && (
+                  <div className='form-status'>
+                    &gt; {statusLines[status]}{status === 1 && <span className='contact-hint-caret'>_</span>}
                   </div>
-                </div>
+                )}
               </div>
             </>
           )}
@@ -181,7 +188,6 @@ function Contact({currentPanel}) {
           &gt; {!openMenu ? 'establish_connection' : hovered ? channelHints[hovered] : 'select_channel'}<span className='contact-hint-caret'>_</span>
         </div>
       )}
-      {noti !== '' && (<div className='notification information'>{noti}</div>)}
     </>
   );
 }
