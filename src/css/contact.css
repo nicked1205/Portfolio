@@ -13,9 +13,8 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    /* Sized by the shorter of width and height so all four channels fit on short screens */
-    width: min(10vw, 15vh);
-    height: min(10vw, 15vh);
+    width: 10vw;
+    height: 10vw;
     border-radius: 50%;
     background-color: rgb(74 246 38/ 0.2);
     border: var(--border);
@@ -30,8 +29,8 @@
 }
 
 .contact-menu.on {
-    width: min(15vw, 22vh);
-    height: min(15vw, 22vh);
+    width: 15vw;
+    height: 15vw;
 }
 
 .contact-menu-center {
@@ -69,7 +68,7 @@
     position: absolute;
     border: var(--border);
     aspect-ratio: 1/1;
-    height: min(10vw, 15vh);
+    height: 10vw;
     opacity: 0;
     transition: 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     padding: 13%;
@@ -82,22 +81,22 @@
 }
 
 .contact-menu.on .linkedin-button {
-    translate: 160% 0;
+    translate: 140% -140%;
     opacity: 1;
 }
 
 .contact-menu.on .resume-button {
-    translate: 0 160%;
+    translate: 140% 140%;
     opacity: 1;
 }
 
 .contact-menu.on .email-button {
-    translate: 0 -160%;
+    translate: -140% -140%;
     opacity: 1;
 }
 
 .contact-menu.on .github-button {
-    translate: -160% 0;
+    translate: -140% 140%;
     opacity: 1;
 }
 
