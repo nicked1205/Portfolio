@@ -61,7 +61,7 @@
 .timeline-marker-ring {
     position: absolute;
     inset: -7px;
-    border: 1px dashed var(--glitch-pink);
+    border: 1px dashed var(--glitch-green);
     border-radius: 50%;
 }
 

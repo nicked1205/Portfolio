@@ -89,21 +89,36 @@ const blink = (delay) => ({
     show: { opacity: [0, 1, 0, 1, 0, 1], transition: { delay, duration: 0.5, times: [0, 0.1, 0.2, 0.4, 0.6, 1] } },
 });
 
+// The card draws out as a green line, then opens downward; closing runs the same steps in reverse
+const ease = [0.39, 0.575, 0.565, 1];
+const green = 'rgb(74 246 38 / 1)';
+const hiddenBorder = 'rgb(74 246 38 / 0)';
+const openUp = {
+    width: { duration: 0.35, ease },
+    height: { delay: 0.35, duration: 0.35, ease },
+    borderColor: { duration: 0.7, times: [0, 0.5, 1] },
+};
+const closeDown = {
+    height: { duration: 0.35, ease },
+    width: { delay: 0.35, duration: 0.35, ease },
+    borderColor: { duration: 0.7, times: [0, 0.5, 1] },
+};
+
 function ExperienceCard({ experience }) {
-    const company = useDecode(experience.company, { delay: 0.45 });
+    const company = useDecode(experience.company, { delay: 0.75 });
 
     return (
         <motion.div
             className='experience-display'
-            initial={{ scaleX: 0, scaleY: 0.01 }}
-            animate={{ scaleX: [0, 1, 1], scaleY: [0.01, 0.01, 1], transition: { duration: 0.6, times: [0, 0.45, 1], ease: 'easeOut' } }}
-            exit={{ scaleX: [1, 1, 0], scaleY: [1, 0.01, 0.01], transition: { duration: 0.4, times: [0, 0.55, 1], ease: 'easeIn' } }}
+            initial={{ width: 0, height: 0 }}
+            animate={{ width: '100%', height: 'auto', borderColor: [hiddenBorder, green, hiddenBorder], transition: openUp }}
+            exit={{ width: 0, height: 0, borderColor: [hiddenBorder, green, hiddenBorder], transition: closeDown }}
         >
             <motion.div
                 className='experience-content'
                 initial='hidden'
                 animate='show'
-                variants={{ show: { transition: { delayChildren: 0.45, staggerChildren: 0.1 } } }}
+                variants={{ show: { transition: { delayChildren: 0.75, staggerChildren: 0.1 } } }}
             >
                 <motion.div variants={line} className='experience-company'>{company}</motion.div>
                 {experience.role && <motion.div variants={line} className='experience-role'>{experience.role}</motion.div>}

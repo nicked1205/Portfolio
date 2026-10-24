@@ -89,7 +89,7 @@
 }
 
 .project-counter {
-    color: var(--glitch-pink);
+    opacity: 0.7;
 }
 
 .project-info {
