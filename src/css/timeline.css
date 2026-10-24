@@ -1,87 +1,48 @@
 .timeline-container {
     position: fixed;
-    display: flex;
     width: 100%;
     height: 10%;
-    align-items: center;
 }
 
 .timeline {
-    height: 0%;
-    width: 0;
-    border: var(--border);
-    margin: 0px 10vw;
-}
-
-.panel.active .timeline {
-    animation: openTimeline 3s linear 0.5s forwards
-}
-
-.timeline-year-marker-0, .timeline-year-marker-1, .timeline-year-marker-2, .timeline-year-marker-3 {
     position: absolute;
-    height: 15%;
-    width: 0%;
-    border: var(--border);
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 0;
+    border-top: var(--border);
+    transform-origin: left center;
+    transform: scaleX(0);
 }
 
-.timeline-year-marker-0::after, .timeline-year-marker-1::after, .timeline-year-marker-2::after, .timeline-year-marker-3::after {
+.timeline-year-marker {
+    position: absolute;
+    top: 42.5%;
+    height: 15%;
+    width: 0;
+    border-left: var(--border);
+    opacity: 0;
+}
+
+.timeline-year-marker::after {
     position: absolute;
     content: attr(data-text);
     color: var(--glitch-green);
     font-size: 10px;
     top: -30px;
-    right: -20px;
-}
-
-.panel.active .timeline-year-marker-0, .panel.active .timeline-year-marker-1, .panel.active  .timeline-year-marker-2, .panel.active  .timeline-year-marker-3, .panel.active .timeline-marker-0, .panel.active .timeline-marker-1, .panel.active .timeline-marker-2, .panel.active .timeline-marker-3, .panel.active .timeline-marker-4 {
-    animation: blinkIn 0.7s linear forwards;
-}
-
-.timeline-year-marker-0 {
-    left: 10%;
-}
-
-.panel.active .timeline-year-marker-0 {
-    animation-delay: 0.3s
-}
-
-
-.timeline-year-marker-1 {
-    left: calc(10% + 80%/3);
-    opacity: 0%;
-}
-
-.panel.active .timeline-year-marker-1 {
-    animation-delay: 1.6s
-}
-
-.timeline-year-marker-3 {
-    right: 10%;
-    opacity: 0%;
-}
-
-.panel.active .timeline-year-marker-3 {
-    animation-delay: 3.6s
-}
-
-.timeline-year-marker-2 {
-    right: calc(10% + 80%/3);
-    opacity: 0%;
-}
-
-.panel.active .timeline-year-marker-2 {
-    animation-delay: 2.6s
+    translate: -50% 0;
 }
 
 .timeline-marker {
     aspect-ratio: 1/1;
     height: 20%;
+    top: 50%;
     border-radius: 50%;
     position: absolute;
     background-color: var(--glitch-green);
-    transform: translateX(-50%);
+    translate: -50% -50%;
     border: var(--border);
-    transition: 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
     opacity: 0;
     justify-content: center;
     align-items: center;
@@ -97,46 +58,19 @@
     cursor: pointer;
 }
 
-/* Axis spans 01/2023 to 01/2026 (36 months); markers sit near each role's start month,
-   nudged apart where start dates are only a month or two apart */
-.timeline-marker-0 {
-    left: calc(10% + 10*80%/36);
+.timeline-marker-ring {
+    position: absolute;
+    inset: -7px;
+    border: 1px dashed var(--glitch-pink);
+    border-radius: 50%;
 }
 
-.timeline-marker-1 {
-    left: calc(10% + 14*80%/36);
-}
-
-.timeline-marker-2 {
-    left: calc(10% + 16*80%/36);
-}
-
-.timeline-marker-3 {
-    left: calc(10% + 19*80%/36);
-}
-
-.timeline-marker-4 {
-    left: calc(10% + 33*80%/36);
-}
-
-.panel.active .timeline-marker-0 {
-    animation-delay: 3.8s
-}
-
-.panel.active .timeline-marker-1 {
-    animation-delay: 4.2s
-}
-
-.panel.active .timeline-marker-2 {
-    animation-delay: 4.6s
-}
-
-.panel.active .timeline-marker-3 {
-    animation-delay: 5.0s
-}
-
-.panel.active .timeline-marker-4 {
-    animation-delay: 5.4s
+.timeline-label {
+    position: absolute;
+    top: 78%;
+    translate: -50% 0;
+    font-size: 9px;
+    white-space: nowrap;
 }
 
 .timeline-marker-center {
@@ -162,4 +96,13 @@
 
 .timeline-marker:hover .timeline-marker-center:nth-child(1) {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 0.3s infinite;
+}
+
+@media only screen and (max-width: 480px) {
+    .timeline-year-marker::after {
+        font-size: 7px;
+    }
+    .timeline-label {
+        font-size: 7px;
+    }
 }

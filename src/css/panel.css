@@ -4,7 +4,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, black 30%, #111 100%);
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.55) 100%),
+    linear-gradient(135deg, black 30%, #111 100%);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   z-index: -2;
@@ -13,6 +15,29 @@
 .panel.active {
   opacity: 1;
   animation: glitch 0.4s linear 1;
+}
+
+/* A faint scan bar sweeps down the screen whenever a panel comes up */
+.panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, transparent, rgb(74 246 38 / 0.08), transparent);
+  transform: translateY(-100%);
+  z-index: 2;
+}
+
+.panel.active::after {
+  animation: sweep 0.9s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel.active, .panel.active::after, .terminal-lines {
+    animation: none;
+  }
 }
 
 .panel-content-split {

@@ -4,6 +4,7 @@ import InformationDisplay from './components/information-display';
 import Terminal from './components/terminal';
 import Timeline from './components/timeline.js';
 import { useState, useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
 import { scramble } from './functions/scrambler.js';
@@ -85,6 +86,7 @@ function App() {
   }, [currentPanel]);
 
   return (
+    <MotionConfig reducedMotion="user">
     <div>
       <div className='reset-prompt iam hidden'>Screen Compromised. System reset in 3</div>
       <Panel content={panels[0]} index={0} currentPanel={currentPanel}>
@@ -135,6 +137,7 @@ function App() {
         </div>
       </div>
     </div>
+    </MotionConfig>
   );
 }
 

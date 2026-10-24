@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import UnrefusableValentine from "../resources/UnrefusableValentine.png";
 import Portfolio from "../resources/Portfolio.png";
 import AIA from "../resources/AIA.png";
@@ -16,7 +17,44 @@ import AgentSkillsRegistry from "../resources/agent-skills-registry.jpeg";
 import BasketballDeflection from "../resources/basketball-deflection.svg";
 import CybersecurityRAG from "../resources/cybersecurity-rag.svg";
 import RLHF from "../resources/rlhf.svg";
-import formatContent from "../functions/util";
+import useDecode from "../functions/useDecode";
+import { line } from "../functions/variants";
+
+const slugOf = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+function ProjectInfo({ project }) {
+  const [title, ...details] = project;
+  const decodedTitle = useDecode(title, { speed: 2 });
+
+  return (
+    <motion.div
+      className="project-info-content"
+      initial="hidden"
+      animate="show"
+      exit={{ opacity: 0, x: -12, transition: { duration: 0.15 } }}
+      variants={{ show: { transition: { delayChildren: 0.1, staggerChildren: 0.12 } } }}
+    >
+      <motion.div variants={line} className="project-title">
+        {decodedTitle}
+      </motion.div>
+      {details.map((text) =>
+        text.startsWith("Tech: ") ? (
+          <motion.div key={text} variants={line} className="project-tech">
+            {text.slice(6).split(", ").map((tech) => (
+              <span key={tech} className="project-tech-chip">
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div key={text} variants={line} className="project-description">
+            {text}
+          </motion.div>
+        )
+      )}
+    </motion.div>
+  );
+}
 
 function ProjectDisplay() {
   const [slide, setSlide] = useState(0);
@@ -116,18 +154,16 @@ function ProjectDisplay() {
     Kamo,
     DataProcessingPortal,
   ];
-  const [formattedContent, setFormattedContent] = useState();
-
-  useEffect(() => {
-    setFormattedContent(formatContent(projects[slide], null));
-    // eslint-disable-next-line
-  }, [slide]);
+  const counter = `[${String(slide + 1).padStart(2, "0")}/${String(projects.length).padStart(2, "0")}]`;
 
   return (
     <>
       <div className="project-display">
         <div className="project-display-top">
-          <div className="decorative-bar"></div>
+          <div className="decorative-bar">
+            <span className="project-path">~/projects/{slugOf(projects[slide][0])}</span>
+            <span className="project-counter">{counter}</span>
+          </div>
           <div className="terminal-control-container">
             <div className="terminal-control"></div>
             <div className="terminal-control"></div>
@@ -136,9 +172,9 @@ function ProjectDisplay() {
         </div>
         <div className="project-display-bottom">
           <div className="project-info">
-            {projects.map((str, index) => {
-              return slide === index && formattedContent;
-            })}
+            <AnimatePresence mode="wait">
+              <ProjectInfo key={slide} project={projects[slide]} />
+            </AnimatePresence>
           </div>
           <div className="project-slider">
             <Swiper

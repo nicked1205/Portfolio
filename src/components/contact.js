@@ -162,6 +162,11 @@ function Contact({currentPanel}) {
           )}
         </form>
       </div>
+      {!openInputs && (
+        <div className='contact-hint glitch'>
+          &gt; {openMenu ? 'select_channel' : 'establish_connection'}<span className='contact-hint-caret'>_</span>
+        </div>
+      )}
       {noti !== '' && (<div className='notification information'>{noti}</div>)}
     </>
   );
