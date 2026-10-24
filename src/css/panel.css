@@ -70,70 +70,6 @@
   padding-right: 35px;
 }
 
-.tracker-container {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  height: 100%;
-  display: inline-block;
-  place-content: center;
-  opacity: 20%;
-  transition: 0.3s;
-  pointer-events: auto !important;
-}
-
-.tracker-container:hover {
-  opacity: 100%;
-}
-
-.tracker {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.tracker button {
-  width: 100%;
-  position: relative;
-  padding: 10px;
-  border: 1px solid var(--glitch-green);
-  background-color: black;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: 0.3s;
-  pointer-events: auto !important;
-}
-
-.tracker button:hover {
-  background-color: var(--glitch-green);
-  opacity: 70%
-}
-
-.tracker button.active {
-  background-color: var(--glitch-green);
-}
-
-.tracker button::before {
-  content: attr(data-text);
-  position: absolute;
-  right: 0;
-  top: 4px;
-  padding: 2px 5px;
-  display: flex;
-  background-color: var(--glitch-green);
-  border-radius: 10%;
-  opacity: 0%;
-  transition: 0.3s;
-  font-size: 8px;
-}
-
-.tracker button:hover::before {
-  opacity: 100%;
-  right: 150%;
-}
-
 .personal-image {
   position: absolute;
   aspect-ratio: 1/1;
@@ -178,19 +114,6 @@
     .personal-image {
       width: 45%;
       left: 27.5%;
-    }
-
-    .tracker button {
-      padding: 8px;
-    }
-    
-    .tracker {
-      padding: 10px;
-    }
-
-    .tracker button:hover::before {
-      opacity: 0;
-      right: 0;
     }
 
     .iam {

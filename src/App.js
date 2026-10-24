@@ -4,6 +4,7 @@ import InformationDisplay from './components/information-display';
 import Terminal from './components/terminal';
 import Timeline from './components/timeline.js';
 import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import personalPhoto from './resources/glow-personal-photo.png';
 import pinkPersonalPhoto from './resources/pink-personal-photo.png';
 import { scramble } from './functions/scrambler.js';
@@ -57,12 +58,36 @@ function App() {
 
     window.addEventListener("wheel", handleScroll, { passive: false });
 
+    // Swipe up/down on touch screens, since touch scrolling is blocked above
+    let touchStart = null;
+    const handleTouchStart = (event) => {
+      touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    };
+    const handleTouchEnd = (event) => {
+      if (!touchStart) return;
+      const dx = touchStart.x - event.changedTouches[0].clientX;
+      const dy = touchStart.y - event.changedTouches[0].clientY;
+      touchStart = null;
+      const isInputElement = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) ||
+        document.activeElement.isContentEditable;
+      if (isInputElement || Math.abs(dy) < 50 || Math.abs(dy) < Math.abs(dx)) return;
+      if (dy > 0) {
+        setCurrentPanel((prev) => Math.min(prev + 1, panels.length - 1));
+      } else {
+        setCurrentPanel((prev) => Math.max(prev - 1, 0));
+      }
+    };
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd);
+
     return () => {
       window.removeEventListener("wheel", preventScroll);
       window.removeEventListener("touchmove", preventScroll);
       window.removeEventListener("keydown", preventScroll);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isScrolling, panels.length]);
 
@@ -122,18 +147,34 @@ function App() {
       <Panel content={panels[4]} index={4} currentPanel={currentPanel}>
         <Contact currentPanel={currentPanel}/>
       </Panel>
-      <div className='tracker-container'>
+      <nav className='tracker-container'>
         <div className="tracker">
+          <div className="tracker-rail">
+            <motion.div
+              className="tracker-rail-fill"
+              initial={false}
+              animate={{ scaleY: currentPanel / (panels.length - 1) }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            />
+          </div>
           {panels.map((panel, index) => (
             <button
-              key={index}
+              key={panel}
               onClick={handleClick(index)}
-              className={currentPanel === index ? "active" : ""}
-              data-text={panel}
-            />
+              className={`tracker-item ${currentPanel === index ? 'active' : index < currentPanel ? 'passed' : ''}`}
+              aria-label={panel}
+            >
+              <span className="tracker-label">{panel}</span>
+              <span className="tracker-index">{String(index + 1).padStart(2, '0')}</span>
+              <span className="tracker-marker">
+                {currentPanel === index && (
+                  <motion.span layoutId="tracker-brackets" className="tracker-brackets" transition={{ duration: 0.35, ease: 'easeOut' }} />
+                )}
+              </span>
+            </button>
           ))}
         </div>
-      </div>
+      </nav>
     </div>
   );
 }

@@ -1,0 +1,140 @@
+.tracker-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+  z-index: 3;
+}
+
+.tracker {
+  --marker: 10px;
+  --row: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 26px;
+}
+
+/* Vertical rail through the marker centres, filled up to the current section */
+.tracker-rail {
+  position: absolute;
+  top: calc(var(--row) / 2);
+  bottom: calc(var(--row) / 2);
+  right: calc(var(--marker) / 2 - 0.5px);
+  width: 1px;
+  background-color: rgb(74 246 38 / 0.25);
+}
+
+.tracker-rail-fill {
+  width: 100%;
+  height: 100%;
+  background-color: var(--glitch-green);
+  transform-origin: top;
+}
+
+.tracker-item {
+  all: unset;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--row);
+  color: var(--glitch-green);
+  font-size: 7px;
+  cursor: pointer;
+  pointer-events: auto !important;
+}
+
+.tracker-label {
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  translate: 6px 0;
+  transition: opacity 0.2s, translate 0.2s;
+}
+
+.tracker-index {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.tracker-marker {
+  position: relative;
+  width: var(--marker);
+  height: var(--marker);
+  border: var(--border);
+  background-color: #111;
+  opacity: 0.6;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.tracker-item:hover .tracker-label {
+  opacity: 0.7;
+  translate: 0 0;
+}
+
+.tracker-item.active .tracker-label {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.tracker-item:hover .tracker-index, .tracker-item.active .tracker-index {
+  opacity: 1;
+}
+
+.tracker-item:hover .tracker-marker, .tracker-item.passed .tracker-marker, .tracker-item.active .tracker-marker {
+  opacity: 1;
+}
+
+.tracker-item.passed .tracker-marker {
+  background: linear-gradient(var(--glitch-green-bg) 0 0), #111;
+}
+
+.tracker-item.active .tracker-marker {
+  background: var(--glitch-green);
+}
+
+/* Corner brackets around the current section's marker; they glide between markers */
+.tracker-brackets {
+  --corner: linear-gradient(var(--glitch-green) 0 0);
+  --length: 5px;
+  --thickness: 1px;
+  position: absolute;
+  inset: -6px;
+  background:
+    var(--corner) top left / var(--length) var(--thickness),
+    var(--corner) top left / var(--thickness) var(--length),
+    var(--corner) top right / var(--length) var(--thickness),
+    var(--corner) top right / var(--thickness) var(--length),
+    var(--corner) bottom left / var(--length) var(--thickness),
+    var(--corner) bottom left / var(--thickness) var(--length),
+    var(--corner) bottom right / var(--length) var(--thickness),
+    var(--corner) bottom right / var(--thickness) var(--length);
+  background-repeat: no-repeat;
+}
+
+/* Narrower desktops: drop the numbers so the active label clears the content */
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .tracker-index {
+    display: none;
+  }
+}
+
+/* Phones: markers and rail only, so the bar doesn't cover content */
+@media only screen and (max-width: 767px) {
+  .tracker-container {
+    padding-right: 12px;
+  }
+
+  .tracker {
+    gap: 18px;
+  }
+
+  .tracker-label, .tracker-index {
+    display: none;
+  }
+}
