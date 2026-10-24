@@ -107,4 +107,7 @@
     .timeline-label {
         font-size: 7px;
     }
+    .timeline-marker-ring {
+        display: none;
+    }
 }
