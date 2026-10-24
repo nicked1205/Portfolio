@@ -7,10 +7,17 @@ const channelHints = {
     email: 'compose_email',
     github: 'open github.com/nicked1205',
     linkedin: 'open linkedin.com/in/nicknguyen2150',
+    resume: 'download resume',
 };
+
+const resumes = [
+    { label: 'AI/ML', file: 'Nick-Nguyen-Resume-AIML.pdf' },
+    { label: 'SOFTWARE', file: 'Nick-Nguyen-Resume-Software-Engineering.pdf' },
+];
 
 function Contact({currentPanel}) {
     const [hovered, setHovered] = useState(null);
+    const [resumePicker, setResumePicker] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
     const [openInputs, setOpenInputs] = useState(false);
     const [cid, setCid] = useState();
@@ -30,6 +37,13 @@ function Contact({currentPanel}) {
         setOpenMenu(false)
         window.open('https://github.com/nicked1205')
       }
+    }
+
+    // Keep the menu open and turn the prompt line into a choice of resume versions
+    const handleClickResume = (e) => {
+      if (!openMenu) return;
+      e.stopPropagation();
+      setResumePicker(true);
     }
 
     const handleClickEmail = () => {
@@ -67,7 +81,10 @@ function Contact({currentPanel}) {
 
     // The buttons can slide out from under the cursor without a mouseleave, so clear the hint on close
     useEffect(() => {
-      if (!openMenu) setHovered(null);
+      if (!openMenu) {
+        setHovered(null);
+        setResumePicker(false);
+      }
     }, [openMenu])
 
     const form = useRef();
@@ -157,6 +174,13 @@ function Contact({currentPanel}) {
                 </g>
             </svg>
           </div>
+          <div className={`resume-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickResume} onMouseEnter={() => setHovered('resume')} onMouseLeave={() => setHovered(null)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4AF626" strokeOpacity={0.7} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2h9l5 5v15H6z" />
+              <path d="M14 2v6h6" />
+              <path d="M9 9h3M9 13h8M9 17h8" />
+            </svg>
+          </div>
           <div className='contact-menu-center'></div>
           <div className='contact-menu-center'></div>
           <span className='contact-menu-label'>{openMenu ? '[ CLOSE ]' : '[ CONNECT ]'}</span>
@@ -202,7 +226,16 @@ function Contact({currentPanel}) {
       </div>
       {!openInputs && (
         <div className='contact-hint glitch'>
-          &gt; {!openMenu ? 'establish_connection' : hovered ? channelHints[hovered] : 'select_channel'}<span className='contact-hint-caret'>_</span>
+          {openMenu && resumePicker ? (
+            <>
+              &gt; download resume:
+              {resumes.map((resume) => (
+                <a key={resume.file} className='resume-link bracket-hover' href={`${process.env.PUBLIC_URL}/resume/${resume.file}`} target='_blank' rel='noreferrer'>[ {resume.label} ]</a>
+              ))}
+            </>
+          ) : (
+            <>&gt; {!openMenu ? 'establish_connection' : hovered ? channelHints[hovered] : 'select_channel'}<span className='contact-hint-caret'>_</span></>
+          )}
         </div>
       )}
     </>
