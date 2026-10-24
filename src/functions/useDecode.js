@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useReducedMotion } from 'motion/react';
 
 const chars = '!<>-_\\/[]{}—=+*^?#';
 
 // Resolves `text` left to right out of random glyphs, restarting whenever `text` changes
 function useDecode(text, { delay = 0, speed = 1.5 } = {}) {
-    const reduceMotion = useReducedMotion();
-    const [output, setOutput] = useState(reduceMotion ? text : '');
+    const [output, setOutput] = useState('');
 
     useEffect(() => {
-        if (reduceMotion) {
-            setOutput(text);
-            return;
-        }
         let frame = 0;
         let request;
         const start = performance.now() + delay * 1000;
@@ -33,7 +27,7 @@ function useDecode(text, { delay = 0, speed = 1.5 } = {}) {
         };
         request = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(request);
-    }, [text, delay, speed, reduceMotion]);
+    }, [text, delay, speed]);
 
     return output;
 }

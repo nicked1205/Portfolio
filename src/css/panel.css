@@ -34,12 +34,6 @@
   animation: sweep 0.9s ease-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .panel.active, .panel.active::after, .terminal-lines {
-    animation: none;
-  }
-}
-
 .panel-content-split {
   display: flex;
   flex: 1;
