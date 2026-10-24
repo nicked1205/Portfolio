@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import '../css/App.css';
 import emailjs from '@emailjs/browser';
+import PixelIcon from './pixel-icon';
 
 // What the prompt line under the menu says while each channel is hovered
 const channelHints = {
@@ -11,6 +12,10 @@ const channelHints = {
 };
 
 const emailAddress = 'nick.nguyen2150@gmail.com';
+
+const backIcon = ['...#...', '..##...', '.######', '#######', '.######', '..##...', '...#...'];
+const copyIcon = ['####...', '#..#...', '#..####', '####..#', '...#..#', '...#..#', '...####'];
+const copiedIcon = ['.......', '......#', '.....##', '#...##.', '##.##..', '.###...', '..#....'];
 
 const resumes = [
     { label: 'AI/ML', file: 'Nick-Nguyen-Resume-AIML.pdf' },
@@ -200,16 +205,16 @@ function Contact({currentPanel}) {
             <>
               <div className='form-header'>
                 <span>&gt; compose_message</span>
-                <div className='back-btn bracket-hover' title='Back (Esc)' onClick={() => {
+                <div className='back-btn bracket-hover' title='Back (Esc)' aria-label='Back' onClick={() => {
                   setOpenInputs(false);
                   setStatus(0);
                   setErrors({});
-                  }}>[ BACK ]</div>
+                  }}><PixelIcon rows={backIcon} className='form-icon' /></div>
               </div>
               <div className='form-to'>
                 <span className='form-prompt'>to &gt;</span>
                 <span className='form-address'>{emailAddress}</span>
-                <div className='copy-btn bracket-hover' onClick={copyEmail}>{copied ? '[ COPIED ]' : '[ COPY ]'}</div>
+                <div className='copy-btn bracket-hover' title={copied ? 'Copied' : 'Copy email address'} aria-label='Copy email address' onClick={copyEmail}><PixelIcon rows={copied ? copiedIcon : copyIcon} className='form-icon' /></div>
               </div>
               <label className='form-row'>
                 <span className='form-prompt'>name &gt;</span>
@@ -227,7 +232,7 @@ function Contact({currentPanel}) {
                 <textarea name='message' className='form-input form-textarea' value={message} onChange={handleMessageChange} onFocus={clearError('message')}></textarea>
               </label>
               <div className='submit-button-container'>
-                {status !== 1 && status !== 2 && <button className='submit-button bracket-hover'>[ SEND ]</button>}
+                {status !== 1 && status !== 2 && <button className='submit-button'>[ SEND ]</button>}
                 {status !== 0 && (
                   <div className='form-status'>
                     &gt; {statusLines[status]}{status === 1 && <span className='contact-hint-caret'>_</span>}
