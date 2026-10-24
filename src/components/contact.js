@@ -24,6 +24,7 @@ const resumes = [
 
 function Contact({currentPanel}) {
     const [hovered, setHovered] = useState(null);
+    const [menuReady, setMenuReady] = useState(false);
     const [resumePicker, setResumePicker] = useState(false);
     const [copied, setCopied] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
@@ -87,13 +88,22 @@ function Contact({currentPanel}) {
       return () => window.removeEventListener('keydown', handleKey);
     }, [currentPanel, openInputs])
 
-    // The buttons can slide out from under the cursor without a mouseleave, so clear the hint on close
+    // The buttons slide out from under the cursor when the menu opens, so ignore hovers until they've
+    // settled (matches the 0.3s transition), and clear the hint on close
     useEffect(() => {
       if (!openMenu) {
+        setMenuReady(false);
         setHovered(null);
         setResumePicker(false);
+        return;
       }
+      const id = setTimeout(() => setMenuReady(true), 300);
+      return () => clearTimeout(id);
     }, [openMenu])
+
+    const hoverChannel = (channel) => () => {
+      if (menuReady) setHovered(channel);
+    };
 
     const form = useRef();
 
@@ -160,7 +170,7 @@ function Contact({currentPanel}) {
       <div className={`contact-menu ${openMenu ? 'on' : 'off'} ${openInputs ? 'close' : 'open'}`} onClick={() => {
           if (!openInputs) setOpenMenu(!openMenu)
         }}>
-          <div className={`linkedin-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickLinkedIn} onMouseEnter={() => setHovered('linkedin')} onMouseLeave={() => setHovered(null)}>
+          <div className={`linkedin-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickLinkedIn} onMouseEnter={hoverChannel('linkedin')} onMouseLeave={() => setHovered(null)}>
             <svg fill="#4AF626" fillOpacity={0.7} height="75%" width="75%" version="1.1" id="Layer_1" viewBox="0 0 310.00 310.00" transform="matrix(1, 0, 0, 1, 0, 0)" stroke="#4AF626"strokeWidth="0.0031">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="1.8599999999999999"></g>
               <g id="SVGRepo_iconCarrier"> 
@@ -171,7 +181,7 @@ function Contact({currentPanel}) {
               </g>
             </svg>
           </div>
-          <div className={`email-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickEmail} onMouseEnter={() => setHovered('email')} onMouseLeave={() => setHovered(null)}>
+          <div className={`email-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickEmail} onMouseEnter={hoverChannel('email')} onMouseLeave={() => setHovered(null)}>
             <svg viewBox="0 0 24 24" opacity={0.7} fill="none">
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -180,7 +190,7 @@ function Contact({currentPanel}) {
               </g>
             </svg>
           </div>
-          <div className={`github-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickGithub} onMouseEnter={() => setHovered('github')} onMouseLeave={() => setHovered(null)}>
+          <div className={`github-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickGithub} onMouseEnter={hoverChannel('github')} onMouseLeave={() => setHovered(null)}>
             <svg className='icon' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0,0,256,256">
                 <g fill="#4af626" fillOpacity={0.7} fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
                     <g transform="scale(8.53333,8.53333)">
@@ -189,7 +199,7 @@ function Contact({currentPanel}) {
                 </g>
             </svg>
           </div>
-          <div className={`resume-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickResume} onMouseEnter={() => setHovered('resume')} onMouseLeave={() => setHovered(null)}>
+          <div className={`resume-button bracket-hover ${openInputs ? 'hidden': ''}`} onClick={handleClickResume} onMouseEnter={hoverChannel('resume')} onMouseLeave={() => setHovered(null)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="#4AF626" strokeOpacity={0.7} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2h9l5 5v15H6z" />
               <path d="M14 2v6h6" />
