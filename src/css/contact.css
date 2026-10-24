@@ -82,22 +82,22 @@
 }
 
 .contact-menu.on .linkedin-button {
-    translate: 140% -140%;
+    translate: 110% -110%;
     opacity: 1;
 }
 
 .contact-menu.on .resume-button {
-    translate: 140% 140%;
+    translate: 110% 110%;
     opacity: 1;
 }
 
 .contact-menu.on .email-button {
-    translate: -140% -140%;
+    translate: -110% -110%;
     opacity: 1;
 }
 
 .contact-menu.on .github-button {
-    translate: -140% 140%;
+    translate: -110% 110%;
     opacity: 1;
 }
 

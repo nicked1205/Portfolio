@@ -238,7 +238,7 @@ function Contact({currentPanel}) {
                 <textarea name='message' className='form-input form-textarea' value={message} onChange={handleMessageChange} onFocus={clearError('message')}></textarea>
               </label>
               <div className='submit-button-container'>
-                {status !== 1 && status !== 2 && <button className='submit-button'>[ SEND ]</button>}
+                {status !== 1 && status !== 2 && <button className='submit-button'>send</button>}
                 {status !== 0 && (
                   <div className='form-status'>
                     &gt; {statusLines[status]}{status === 1 && <span className='contact-hint-caret'>_</span>}
