@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { Fragment, useEffect, useState, useRef } from 'react';
 import '../css/App.css';
 import emailjs from '@emailjs/browser';
 
@@ -254,8 +254,11 @@ function Contact({currentPanel}) {
           {openMenu && resumePicker ? (
             <>
               &gt; download resume:
-              {resumes.map((resume) => (
-                <a key={resume.file} className='resume-link' href={`${process.env.PUBLIC_URL}/resume/${resume.file}`} target='_blank' rel='noreferrer'>{resume.label}</a>
+              {resumes.map((resume, index) => (
+                <Fragment key={resume.file}>
+                  {index > 0 && <span className='resume-separator'>|</span>}
+                  <a className='resume-link' href={`${process.env.PUBLIC_URL}/resume/${resume.file}`} target='_blank' rel='noreferrer'>{resume.label}</a>
+                </Fragment>
               ))}
             </>
           ) : (

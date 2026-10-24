@@ -350,9 +350,14 @@
     }
 }
 
+.resume-separator {
+    margin-left: 1em;
+    opacity: 0.6;
+}
+
 .resume-link {
     position: relative;
-    margin-left: 1.5em;
+    margin-left: 1em;
     color: var(--glitch-green);
     text-decoration: none;
     text-underline-offset: 4px;
