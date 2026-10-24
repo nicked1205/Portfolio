@@ -10,6 +10,8 @@ const channelHints = {
     resume: 'download resume',
 };
 
+const emailAddress = 'nick.nguyen2150@gmail.com';
+
 const resumes = [
     { label: 'AI/ML', file: 'Nick-Nguyen-Resume-AIML.pdf' },
     { label: 'SOFTWARE', file: 'Nick-Nguyen-Resume-Software-Engineering.pdf' },
@@ -18,6 +20,7 @@ const resumes = [
 function Contact({currentPanel}) {
     const [hovered, setHovered] = useState(null);
     const [resumePicker, setResumePicker] = useState(false);
+    const [copied, setCopied] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
     const [openInputs, setOpenInputs] = useState(false);
     const [cid, setCid] = useState();
@@ -131,6 +134,13 @@ function Contact({currentPanel}) {
       setMessage(e.target.value);
     };
 
+    const copyEmail = () => {
+      navigator.clipboard.writeText(emailAddress).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      });
+    };
+
     const clearError = (field) => () => setErrors((prev) => ({ ...prev, [field]: undefined }));
 
     const statusLines = {
@@ -196,6 +206,11 @@ function Contact({currentPanel}) {
                   setStatus(0);
                   setErrors({});
                   }}>[ BACK ]</div>
+              </div>
+              <div className='form-to'>
+                <span className='form-prompt'>to &gt;</span>
+                <span className='form-address'>{emailAddress}</span>
+                <div className='copy-btn bracket-hover' onClick={copyEmail}>{copied ? '[ COPIED ]' : '[ COPY ]'}</div>
               </div>
               <label className='form-row'>
                 <span className='form-prompt'>name &gt;</span>
