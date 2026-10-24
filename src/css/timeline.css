@@ -97,24 +97,26 @@
     cursor: pointer;
 }
 
+/* Axis spans 01/2023 to 01/2026 (36 months); markers sit near each role's start month,
+   nudged apart where start dates are only a month or two apart */
 .timeline-marker-0 {
-    left: calc(10% + 6*80%/18);
+    left: calc(10% + 10*80%/36);
 }
 
 .timeline-marker-1 {
-    left: calc(10% + 9*80%/18);
+    left: calc(10% + 14*80%/36);
 }
 
 .timeline-marker-2 {
-    left: calc(10% + 12*80%/18);
+    left: calc(10% + 16*80%/36);
 }
 
 .timeline-marker-3 {
-    left: calc(10% + 13*80%/18);
+    left: calc(10% + 19*80%/36);
 }
 
 .timeline-marker-4 {
-    left: calc(10% + 16*80%/18);
+    left: calc(10% + 33*80%/36);
 }
 
 .panel.active .timeline-marker-0 {

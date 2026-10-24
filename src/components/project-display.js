@@ -13,25 +13,18 @@ import Kamo from "../resources/kamo.png";
 import Mask from "../resources/Mask.png";
 import DataProcessingPortal from "../resources/DataProcessingPortal.png";
 import AgentSkillsRegistry from "../resources/agent-skills-registry.jpeg";
+import BasketballDeflection from "../resources/basketball-deflection.svg";
+import CybersecurityRAG from "../resources/cybersecurity-rag.svg";
+import RLHF from "../resources/rlhf.svg";
 import formatContent from "../functions/util";
 
 function ProjectDisplay() {
   const [slide, setSlide] = useState(0);
   const projects = [
     [
-      "agent-skills-registry",
-      "Agent Skills Registry is a web app to upload, manage, and share markdown files that gives AI agents instructions for achieving certain tasks.",
-      "Tech: ReactJS, TailwindCSS, DotNet Core, SQLite",
-    ],
-    [
-      "Algorithms in Action",
-      "A website that visualizes different computer algorithms for students to understand them better and educators to better deliver their lessons",
-      "Tech: Javascript, CSS, HTML",
-    ],
-    [
-      "BioNix",
-      "Wrapping bioinformatics software into a package manager called BioNix",
-      "Tech: Nix, Markdown",
+      "Agent Skills Registry",
+      "A full-stack version control system for AI agent prompts, with a GitHub-style diffing engine, rollback, and a secure JWT-authenticated REST API",
+      "Tech: Vite/React, TailwindCSS, .NET Core, SQLite, Docker",
     ],
     [
       "Life-saving Mask",
@@ -39,14 +32,39 @@ function ProjectDisplay() {
       "Tech: ReactJS, TailwindCSS, HTML",
     ],
     [
-      "Unrefusable Valentine",
-      "An ultimate web app designed to ask someone to be your Valentine in a way that is impossible to say no",
-      "Tech: ReactJS, TailwindCSS, HTML",
+      "Algorithms in Action",
+      "An open-source website that visualizes algorithms such as Hashing and Sorting to support students and educators, where I implemented 3 new algorithms and visuals",
+      "Tech: JavaScript, CSS, HTML",
+    ],
+    [
+      "BioNix",
+      "Wrapping 3 bioinformatics tools previously unavailable in nixpkgs into BioNix, and refining over a dozen documentations around Nix, BioNix, Kraken2, TRF, and RepeatMasker",
+      "Tech: Nix, nixpkgs",
     ],
     [
       "Portfolio",
       "My digital portofio to showcase my experiences, projects, contacts and most importantly, my UI design and development capabilities",
       "Tech: ReactJS, HTML, CSS",
+    ],
+    [
+      "Basketball Deflection Detection",
+      "A computer vision pipeline that detects deflections in broadcast basketball footage, pairing a custom YOLO detector and SigLIP team clustering with a BiLSTM classifier, lifting F1 from 0.48 to 0.67",
+      "Tech: PyTorch, Roboflow, YOLOv8, HuggingFace",
+    ],
+    [
+      "Cybersecurity RAG",
+      "A zero-cloud-exposure RAG pipeline for cybersecurity incident response, using hybrid search with a cross-encoder reranker, benchmarked across 100+ queries with RAGAS and DeepEval",
+      "Tech: HuggingFace, Streamlit, LangChain, ChromaDB",
+    ],
+    [
+      "RLHF",
+      "An RLHF pipeline comparing PPO against DPO on sub-billion-parameter models with LoRA, documenting reward hacking in PPO and DPO's ≈15% lower perplexity degradation",
+      "Tech: PyTorch, HuggingFace",
+    ],
+    [
+      "Unrefusable Valentine",
+      "An ultimate web app designed to ask someone to be your Valentine in a way that is impossible to say no",
+      "Tech: ReactJS, TailwindCSS, HTML",
     ],
     [
       "Kamo",
@@ -61,31 +79,40 @@ function ProjectDisplay() {
   ];
   const githubUrls = [
     "https://github.com/nicked1205/agent-skills-registry",
+    "https://github.com/nicked1205/Mask-Ecommerce-Site",
     "https://github.com/tuankhainguy/algorithms-in-action.github.io",
     "https://github.com/WEHI-ResearchComputing/BioNix-GettingStarted/wiki",
-    "https://github.com/nicked1205/Mask-Ecommerce-Site",
-    "https://github.com/nicked1205/Unrefusable-Valentine",
     "https://github.com/nicked1205/Portfolio",
+    "",
+    "https://github.com/nicked1205/rag-experiment",
+    "https://github.com/nicked1205/reinforcement-learning-human-feedback",
+    "https://github.com/nicked1205/Unrefusable-Valentine",
     "",
     "https://github.com/nicked1205/Data-Processing-Portal",
   ];
   const webUrls = [
-    "",
+    "https://agent-skills-registry-4hpi.vercel.app/",
+    "https://www.khautrangtaooxy.vn/",
     "https://dev-aia.vercel.app/",
     "",
-    "https://www.khautrangtaooxy.vn/",
-    "https://valentine-delta-livid.vercel.app/",
     "https://www.nickng.me/",
+    "",
+    "",
+    "",
+    "https://valentine-delta-livid.vercel.app/",
     "",
     "https://data-processing-portal-blush.vercel.app/",
   ];
   const imageUrls = [
     AgentSkillsRegistry,
+    Mask,
     AIA,
     BioNix,
-    Mask,
-    UnrefusableValentine,
     Portfolio,
+    BasketballDeflection,
+    CybersecurityRAG,
+    RLHF,
+    UnrefusableValentine,
     Kamo,
     DataProcessingPortal,
   ];
@@ -121,6 +148,7 @@ function ProjectDisplay() {
                 nextEl: ".slider-next",
               }}
               loop={true}
+              onSlideChange={(swiper) => setSlide(swiper.realIndex)}
               className="slider"
             >
               {projects.map((projects, index) => {
@@ -135,12 +163,7 @@ function ProjectDisplay() {
                 );
               })}
             </Swiper>
-            <div
-              className="slider-prev"
-              onClick={() =>
-                setSlide(slide === 0 ? projects.length - 1 : slide - 1)
-              }
-            >
+            <div className="slider-prev">
               <svg
                 fill="#4AF626"
                 height="100%"
@@ -165,12 +188,7 @@ function ProjectDisplay() {
                 </g>
               </svg>
             </div>
-            <div
-              className="slider-next"
-              onClick={() =>
-                setSlide(slide === projects.length - 1 ? 0 : slide + 1)
-              }
-            >
+            <div className="slider-next">
               <svg
                 fill="#4AF626"
                 height="100%"

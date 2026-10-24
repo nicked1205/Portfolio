@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import '../css/App.css';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 function Contact({currentPanel}) {
     const [openMenu, setOpenMenu] = useState(false);
